@@ -34,3 +34,5 @@ def create_app():
     init_plugs(app)
 
     return app
+
+create_app()
