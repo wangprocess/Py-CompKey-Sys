@@ -1,7 +1,7 @@
 # Py-CompKey-Sys
 
 #### 介绍
-JustVS
+    JustVS
 这是一个竞争性关键词系统
 
 #### 软件架构
@@ -9,10 +9,20 @@ JustVS
 
 
 #### 安装教程
+##### 配置虚拟环境
+    #   安装虚拟环境依赖
+    1.  pip install virtualenv
+    #   创建虚拟环境
+    2.  virtualenv venv
+    #   激活虚拟环境
+    3.  venv/Scripts/activate
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+##### 安装依赖
+    1.  pip install -r requirement
+
+##### 数据库初始化
+    1.  flask db init
+    2.  flask db migrate
 
 #### 使用说明
 

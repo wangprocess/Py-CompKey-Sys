@@ -1,7 +1,9 @@
 from flask import Flask
 
-from .init_database import init_database
+from .create_database import create_database
+from .init_sqlalchemy import db, init_databases
 
 
 def init_plugs(app: Flask):
-    init_database(app)
+    init_databases(app)
+    create_database(app)
