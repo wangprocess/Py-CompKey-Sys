@@ -1,4 +1,4 @@
-from applications import db
+from extensions import db
 
 # 创建种子关键词对应的竞争性关键词的中介表
 seedword_compword = db.Table(
