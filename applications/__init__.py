@@ -1,3 +1,4 @@
+import os.path
 import secrets
 
 from flask import Flask
@@ -21,17 +22,20 @@ def create_app():
 
     # 读取配置文件
     app.config.from_object(Config)
+    app.template_folder = os.path.abspath('templates')
+    app.static_folder = os.path.abspath('static')
 
     # 初始化各种插件，包括db、SQLAlchemy和Migrate
-    login_manager = LoginManager(app)
     init_plugs(app)
 
     from .words import compkey_blue
     from .users import user_blue
+    from .views import index_bp
 
     import models
     # 注册蓝图
     app.register_blueprint(compkey_blue, url_prefix='/compkey')
     app.register_blueprint(user_blue, url_prefix='/user')
+    app.register_blueprint(index_bp, url_prefix='/')
 
     return app
