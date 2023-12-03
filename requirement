@@ -9,3 +9,4 @@ jieba==0.42.1
 spacy
 matplotlib==3.8.2
 chardet==5.2.0
+oss2

@@ -1,7 +1,7 @@
 from applications.words import compkey_blue
 from models import SeedWordModel, CompWordModel, SeedwordCompword, AgencyWordModel
 from flask import request
-from algorithm import compkey_alg
+from algorithm import compkey_alg, plot
 from extensions import db
 
 
@@ -34,8 +34,10 @@ def get_compword():
             print("使用compkey算法")
             seedword_list = [seedword]
             compkey_alg(seedword_list)
-            count = 0
-            get_num = 10
+            plot(seedword)
+
+            count = 0   # 计数用
+            get_num = 10  # 存的竞争性关键词个数
 
             seedword_model = SeedWordModel()
             seedword_model.word = seedword
