@@ -86,4 +86,3 @@ def plot(seedword):
 
     plt.savefig('algorithm/image/' + seedword + '_compkeys.jpg')
     # 显示图形
-    plt.show()
