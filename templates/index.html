@@ -688,21 +688,24 @@
     $(document).ready(function () {
         $('#search-btn').on('click', (e) => {
             e.preventDefault();
-            let keyword = $('#keyword').val().serialize()
+            let keyword = $('#keyword').val()
             if (keyword == '') {
                 alert('请输入一个合法的关键词')
             } else {
                 console.log(keyword);
                 // TODO:请求url，获得数据并实现渲染
                 $.ajax({
-                    url     : "/compkey/getCompword",
-                    type    : "POST",
-                    data    : keyword,
-                    success : (data)=>{
+                    url: "/compkey/getCompword",
+                    type: "POST",
+                    dataType:"JSON",
+                    data: {
+                        seedword: keyword
+                    },
+                    success: (data) => {
                         console.log(data)
                     },
-                    error   : (e)=>{
-                        console.log(e);
+                    error: (e) => {
+                        console.log(e)
                     }
                 })
             }
