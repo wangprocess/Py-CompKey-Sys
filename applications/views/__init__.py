@@ -1,5 +1,5 @@
 from flask import Blueprint
 
-view_blue = Blueprint('view', __name__)
+index_bp = Blueprint('index_bp', __name__)
 
 from .view import *

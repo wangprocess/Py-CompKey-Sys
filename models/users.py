@@ -1,8 +1,9 @@
 from extensions import db
 from datetime import datetime
+from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin, current_user
 
 
-class UserModel(db.Model):
+class UserModel(db.Model, UserMixin):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True, comment='用户的ID')
     username = db.Column(db.String(20), comment='用户名')
