@@ -28,10 +28,12 @@ def create_app():
 
     from .words import compkey_blue
     from .users import user_blue
+    from .views import view_blue
 
     import models
     # 注册蓝图
     app.register_blueprint(compkey_blue, url_prefix='/compkey')
     app.register_blueprint(user_blue, url_prefix='/user')
+    app.register_blueprint(view_blue, url_prefix='/')
 
     return app
