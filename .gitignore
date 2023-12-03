@@ -137,6 +137,24 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+# Train data
+algorithm/user_tag_query.10W.TRAIN
+algorithm/cc.zh.300.bin.gz
+
+# Result data
+algorithm/all_logs.txt
+algorithm/jieba_words.txt
+algorithm/re_filter.txt
+algorithm/seeds_keyvalue.txt
+algorithm/stopwords_filter.txt
+
+algorithm/agencywords_compkey/
+algorithm/seedwords_agencywords/
+algorithm/comp/
+algorithm/comp_plus/
+algorithm/comp_base_a/
+algorithm/image
+
 # Flask Project
 .idea/
 vnev/
