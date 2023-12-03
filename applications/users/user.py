@@ -6,3 +6,4 @@ from models import UserModel
 def get_user():
     # 使用UserModel进行操作 。。。。。。
     print("get user")
+    return "getuser"
