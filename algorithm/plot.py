@@ -17,7 +17,7 @@ def plot(seedword):
     # 获取agencyword中介关键词和相应的权重
     agencywords_list = get_agencywords(seedword)
     for agencyword in agencywords_list:
-        with open('./seedwords_agencywords/agency_words/seedword_' + seedword + '.txt', 'r', encoding='utf-8') as file:
+        with open('algorithm/seedwords_agencywords/agency_words/seedword_' + seedword + '.txt', 'r', encoding='utf-8') as file:
             for record in file:
                 info = record.split("||")
                 if info[0][4:] == agencyword:
@@ -25,7 +25,7 @@ def plot(seedword):
                     weight_list.append(weight_value)
 
     # 获取comp
-    with open('./comp_plus/seedword_' + seedword + '.txt', 'r', encoding='utf-8') as file:
+    with open('algorithm/comp_plus/seedword_' + seedword + '.txt', 'r', encoding='utf-8') as file:
         count = 0
         for record in file:
             info = record.split("||")
@@ -84,6 +84,6 @@ def plot(seedword):
     # 调整子图的间距
     plt.tight_layout()
 
-    plt.savefig('./image/' + seedword + '_compkeys.jpg')
+    plt.savefig('algorithm/image/' + seedword + '_compkeys.jpg')
     # 显示图形
     plt.show()
