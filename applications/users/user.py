@@ -1,7 +1,7 @@
 from applications.users import user_blue
 from models import UserModel
 from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin, current_user
-from flask import Flask, request, session
+from flask import Flask, request, session, redirect
 from extensions.init_login import *
 app = Flask(__name__)
 
@@ -23,5 +23,6 @@ def login():
         if user and user.password_hash == password:  # Replace with proper password hashing
             login_user(user)
             session['user_id'] = user.id
-            return f'Current User: {current_user.username}'
+            session['role'] = user.role
+            return redirect('/')
     return "fail"
