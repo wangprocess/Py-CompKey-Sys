@@ -693,8 +693,15 @@
                 alert('请输入一个合法的关键词')
             } else {
                 console.log(keyword);
+                // TODO:请求url，获得数据并实现渲染
                 $.ajax({
-                    url: ""
+                    url     : "",
+                    type    : "",
+                    data    : null,
+                    success : ()=>{},
+                    error   : (e)=>{
+                        console.log(e);
+                    }
                 })
             }
 

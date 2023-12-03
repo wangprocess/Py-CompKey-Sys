@@ -37,6 +37,6 @@ def create_app():
     # 注册蓝图
     app.register_blueprint(compkey_blue, url_prefix='/compkey')
     app.register_blueprint(user_blue, url_prefix='/user')
-    app.register_blueprint(index_bp, url_prefix='/')
+    app.register_blueprint(index_bp)
 
     return app
