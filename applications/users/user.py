@@ -24,6 +24,7 @@ def login():
         if user and user.password_hash == password:  # Replace with proper password hashing
             login_user(user)
             session['user_id'] = user.id
+            session['username'] = user.username
             session['role'] = user.role
             return redirect('/')
     return "fail"
@@ -52,3 +53,19 @@ def register():
         print("注册失败！")
     return redirect('/register')
 
+@user_blue.route('/vip', methods=['GET'])
+def vip():
+    if session['username'] and session['role'] == 0:
+        username = session['username']
+        user = UserModel.query.filter_by(username=username).first()
+        if user:
+            # 更新用户的权限为 VIP（假设 VIP 对应的是 1）
+            user.role = 1
+            # 提交事务
+            db.session.commit()
+            session['role'] = user.role
+            print("用户权限已更新为 VIP")
+            return redirect('/')
+        else:
+            print("用户不存在")
+            return "failure"

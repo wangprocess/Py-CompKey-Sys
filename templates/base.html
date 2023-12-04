@@ -78,8 +78,25 @@
                                 <li><a class="dropdown-item" href="contact.html">Contact Form</a></li>
                             </ul>
                         </li>
-                    </ul>
+                        {% if 'username' in session %}
+                            <li class="nav-item">
+                                <span class="nav-link">Welcome, {{ session['username'] }}!</span>
+                            </li>
 
+                        {% endif %}
+                        {% if 'role' in session %}
+                        <li class="nav-item">
+                            {% if session['role'] == 0 %}
+                                <span class="nav-link">普通用户</span>
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="/vip">VIP Application</a>
+                            </li>
+                            {% elif session['role'] == 1 %}
+                                <span class="nav-link">尊贵的VIP用户</span>
+                        {% endif %}
+                        </li>
+                 {% endif %}
+                    </ul>
                     <div class="d-none d-lg-block">
                         <a href="/login" class="navbar-icon bi-person smoothscroll"></a>
                     </div>
@@ -105,7 +122,7 @@
 
                     <ul class="site-footer-links">
                         <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">home/static/admin/admin/images/avatar.jpg</a>
+                            <a href="#" class="site-footer-link">还没有什么内容</a>
                         </li>
 
                         <li class="site-footer-link-item">
