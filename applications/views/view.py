@@ -24,3 +24,7 @@ def detail_page():
 @index_bp.route('/lists')
 def list_page():
     return render_template('topic-listing.html')
+
+@index_bp.route('/vip')
+def vip_page():
+    return render_template('vip-confirm.html')
