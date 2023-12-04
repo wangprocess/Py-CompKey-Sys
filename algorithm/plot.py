@@ -8,6 +8,7 @@ path_check("algorithm/image")
 
 
 def plot(seedword):
+    plt.cla()
     comp_list = []
     compkey_list = []
 
@@ -86,3 +87,5 @@ def plot(seedword):
 
     plt.savefig('algorithm/image/' + seedword + '_compkeys.jpg')
     # 显示图形
+
+    plt.close()
