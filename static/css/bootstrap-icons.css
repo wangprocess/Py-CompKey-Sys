@@ -105,7 +105,7 @@ url("../fonts/bootstrap-icons.woff?8d200481aa7f02a2d63a331fc782cfaf") format("wo
 .bi-at::before { content: "\f152"; }
 .bi-award-fill::before { content: "\f153"; }
 .bi-award::before { content: "\f154"; }
-.bi-back::before { content: "\f155"; }
+.bi-back::before { background-image: url("../images/logo.png") }
 .bi-backspace-fill::before { content: "\f156"; }
 .bi-backspace-reverse-fill::before { content: "\f157"; }
 .bi-backspace-reverse::before { content: "\f158"; }
