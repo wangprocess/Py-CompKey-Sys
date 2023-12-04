@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}JustVs{% endblock %}
+{% block head %}
+<!-- TODO:引入需要引入的头文件等 -->
+{% endblock %}
+{% block body %}
+<!-- TODO:写入主体页面内容 -->
+<header class="site-header d-flex flex-column justify-content-center align-items-center">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-5 col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Homepage</a></li>
+
+                        <li class="breadcrumb-item active" aria-current="page">VIP Application</li>
+                    </ol>
+                </nav>
+
+                <h2 class="text-white">VIP Application</h2>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<section class="faq-section section-padding" id="section_4">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-6 col-12">
+                <h2 class="mb-4">竞争性关键词商业报表分析</h2>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="col-lg-5 col-12">
+                <img src="../static/images/faq_graphic.jpg" class="img-fluid" alt="FAQs">
+                <a href="user/vip" class="accordion-button" id="search-btn">免费试用一个月VIP功能</a>
+            </div>
+
+            <div class="col-lg-6 col-12 m-auto">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                为什么选择我们?
+                            </button>
+                        </h2>
+
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p><strong>在竞争性关键词商业分析领域，我们脱颖而出的原因有：</strong></p>
+                                <p><strong>专业团队： </strong>我们拥有一支经验丰富且专业的团队，精通市场趋势和关键词分析技术，为您提供高效准确的商业分析服务。</p>
+                                <p><strong>先进技术： </strong>我们采用最先进的技术工具和算法，确保您获得最精准的竞争性关键词分析报告。我们不仅追随行业最新技术，更积极参与技术创新，以确保您始终站在竞争的最前沿。</p>
+                                <p><strong>客户导向： </strong>我们注重与客户的紧密合作，倾听您的需求，并根据您的具体业务情境量身定制解决方案。我们的目标是提供符合您期望的高水平服务，助您在激烈的市场竞争中脱颖而出。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                我们能给您带来什么?
+                            </button>
+                        </h2>
+
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <p><strong>选择我们，您将获得以下优势：</strong></p>
+                                <p><strong>深度分析： </strong>我们的商业分析不仅仅停留在表面，更关注深度洞察。我们通过多维度、全面的关键词分析，为您提供深刻的市场了解，助您制定更明智的业务策略。</p>
+                                <p><strong>实时更新： </strong>我们的系统采用实时更新机制，确保您随时了解竞争环境的变化。通过持续监测和及时反馈，您能够快速作出反应，抢占先机。</p>
+                                <p><strong>可视化报告： </strong>我们提供清晰直观的可视化报告，使复杂的商业数据变得简单易懂。这帮助您更好地理解市场动态，快速做出决策。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                知己知彼，方能百战百胜！
+                            </button>
+                        </h2>
+
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                在竞争激烈的商业环境中，了解自身与竞争对手的情况至关重要。我们秉持<strong>“知己知彼，方能百战百胜”</strong>的理念，通过全面的竞争性关键词分析，帮助您深入了解对手策略，挖掘市场机会，实现在竞争中的持续胜出。我们助您建立智慧竞争体系，让您始终保持领先地位。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block script %}
+<!-- TODO:载入或写入js -->
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.bundle.min.js"></script>
+<script src="../static/js/jquery.sticky.js"></script>
+<script src="../static/js/click-scroll.js"></script>
+<script src="../static/js/custom.js"></script>
+{% endblock %}

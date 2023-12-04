@@ -3,10 +3,13 @@ from flask import Flask, render_template, request, redirect, url_for
 from applications.users import *
 
 
-@index_bp.route('/login', methods=['GET'])
+@index_bp.route('/login')
 def login_index():
     return render_template('new_login.html')
 
+@index_bp.route('/register')
+def register_index():
+    return render_template('register.html')
 
 @index_bp.route('/')
 def index_page():
@@ -25,3 +28,7 @@ def list_page(seedword):
 @index_bp.route('/report')
 def report_page():
     return render_template('keyword-report.html')
+
+@index_bp.route('/vip')
+def vip_page():
+    return render_template('vip-confirm.html')
