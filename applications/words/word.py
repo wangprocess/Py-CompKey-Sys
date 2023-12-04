@@ -42,7 +42,6 @@ def get_compword():
                 message='成功获取',
                 result=result
             )
-
         else:
             print("使用compkey算法")
             seedword_list = [seedword]
