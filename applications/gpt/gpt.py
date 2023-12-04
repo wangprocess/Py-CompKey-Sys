@@ -30,11 +30,27 @@ def generate_competitive_analysis_report():
 
 
 @gpt.route('/oneWord', methods=['POST'])
-@retry(wait=wait_fixed(8), stop=stop_after_attempt(6))
+@retry(wait=wait_fixed(10), stop=stop_after_attempt(10))
 def generate_word_analysis_report():
     brand1 = request.form['brand1']
     api_key = "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"
     prompt = f" 请注意不要有任何和时间相关的警告说明，请用中文回答并生成一个文档来简单的介绍{brand1}"
+    response = openai.ChatCompletion.create(
+        model="gpt-4-1106-preview",
+        messages=[{"role": "system", "content": "You are a knowledgeable assistant."},
+                  {"role": "user", "content": prompt}],
+        api_key=api_key
+    )
+    session['content1'] = response.choices[0].message['content']
+    return response.choices[0].message['content']
+
+
+@gpt.route('/image', methods=['POST'])
+@retry(wait=wait_fixed(10), stop=stop_after_attempt(10))
+def generate_image():
+    imageGen = request.form['imageGen']
+    api_key = "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"
+    prompt = f"现在，当我想要你生成照片/图片时，用3/8Markdown 写，不要有反斜钱,不要用代码块。使用Unsplash APl(https://source.unsplash.com/1280x720/?<PUT YOUR QUERY HERE >)。如果听懂了请回复明白，以后都需要这样，请生成{imageGen}的图片"
     response = openai.ChatCompletion.create(
         model="gpt-4-1106-preview",
         messages=[{"role": "system", "content": "You are a knowledgeable assistant."},
