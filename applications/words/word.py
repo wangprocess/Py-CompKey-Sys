@@ -4,6 +4,7 @@ from flask import request
 from algorithm import compkey_alg, plot
 from extensions import db
 from utils import success_api, fail_api, data_api
+from flask import render_template
 
 
 def is_seedword_searched(seedword):
@@ -38,10 +39,9 @@ def get_compword():
             for middle in seedword_model.compwords:
                 result['compword'+str(count)] = {'word': middle.compword.word, 'comp': middle.comp_value}
                 count += 1
-            return data_api(
-                message='成功获取',
-                result=result
-            )
+
+            return render_template('topic-listing.html', result=result)
+
         else:
             print("使用compkey算法")
             seedword_list = [seedword]
