@@ -1,19 +1,20 @@
 import matplotlib.pyplot as plt
 import wordcloud
-import os
-def plot_cloud(comp_dict):
+from .compkey_ALG import path_check
+
+path_check("algorithm/image")
+
+
+def plot_cloud(seedword, compword_list):
     k_text = ""
-    comp_key = comp_dict[0]
     # import re
     #
     # relink = r'k:(.+)'
-    for key in comp_dict:
+    for key in compword_list:
         # k = re.findall(relink, key)
         k_text += key + " "
-    print(comp_key)
-    print(k_text)
 
-    wc = wordcloud.WordCloud('../static/fonts/SimHei.ttf',
+    wc = wordcloud.WordCloud('static/fonts/SimHei.ttf',
                    width=1000,
                    height=700,
                    background_color='white',
@@ -22,9 +23,10 @@ def plot_cloud(comp_dict):
     # 显示词云
     plt.imshow(wc, interpolation='bilinear')  # 用plt显示图片
     plt.axis("off")  # 不显示坐标轴
-    plt.show()  # 显示图片
-    path = 'algorithm/image/' + comp_key + '_compkeys.jpg'
+
+    path = 'algorithm/image/' + seedword + '_wordcloud.jpg'
     plt.savefig(path)
 
-comp_dict = ['小米','华为','三星','诺基亚','魅族','一加']
-plot_cloud(comp_dict)
+    plt.close()
+
+    return path

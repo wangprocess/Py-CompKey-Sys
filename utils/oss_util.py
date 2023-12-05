@@ -38,4 +38,4 @@ if __name__ == '__main__':
     #     print(get_uuid())
 
     _oss_util = OSSUtil()
-    print(_oss_util.put_object("G:\CourseProject\Py-Compkey-Sys\static\images\icon.png"))
+    print(_oss_util.put_object("G:\CourseProject\Py-Compkey-Sys\static\images\原神启动.jpg"))
