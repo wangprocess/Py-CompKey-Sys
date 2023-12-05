@@ -9,28 +9,30 @@
     <div class="container">
         <div class="row justify-content-center align-items-center">
 
-            <div class="col-lg-5 col-12 mb-5">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Homepage</a></li>
-
-                        <li class="breadcrumb-item active" aria-current="page">Web Design</li>
-                    </ol>
-                </nav>
-
-                <h2 class="text-white">Introduction to <br> Web Design 101</h2>
-
-                <div class="d-flex align-items-center mt-5">
-                    <a href="#topics-detail" class="btn custom-btn custom-border-btn smoothscroll me-4">Read More</a>
-
-                    <a href="#top" class="custom-icon bi-bookmark smoothscroll"></a>
+            <div class="col-lg-5 col-12">
+                <div class="topics-detail-block bg-white shadow-lg">
+                    <!-- 这里用传入的img -->
+                    <img src="../static/images/topics/undraw_Remote_design_team_re_urdx.png"
+                        class="topics-detail-block-image img-fluid">
                 </div>
             </div>
 
-            <div class="col-lg-5 col-12">
-                <div class="topics-detail-block bg-white shadow-lg">
-                    <img src="../static/images/topics/undraw_Remote_design_team_re_urdx.png"
-                        class="topics-detail-block-image img-fluid">
+            <div class="col-lg-5 col-12 mb-5">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <!-- 评分页面 -->
+                        <li class="breadcrumb-item"><a href="#">评分</a></li>
+
+                        <li class="breadcrumb-item active" aria-current="page">苹果</li>
+                    </ol>
+                </nav>
+                <!--  -->
+                <h2 class="text-white">苹果</h2>
+
+                <div class="d-flex align-items-center mt-5">
+                    <a href="#topics-detail" class="btn custom-btn custom-border-btn smoothscroll me-4">看看大家的评分</a>
+
+                    <a href="#top" class="custom-icon bi-bookmark smoothscroll"></a>
                 </div>
             </div>
 
@@ -44,7 +46,7 @@
         <div class="row">
 
             <div class="col-lg-8 col-12 m-auto">
-                <h3 class="mb-4">Introduction to Web Design</h3>
+                <!-- <h3 class="mb-4">Introduction to Web Design</h3>
 
                 <p>So how can you stand out, do something unique and interesting, build an online business, and get paid
                     enough to change life. Please visit TemplateMo website to download free website templates.</p>
@@ -70,8 +72,40 @@
                 </div>
 
                 <p>Most people start with freelancing skills they already have as a side hustle to build up income. This
-                    extra cash can be used for a vacation, to boost up savings, investing, build business.</p>
+                    extra cash can be used for a vacation, to boost up savings, investing, build business.</p> -->
+                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <figure>
+                                <!-- 默认头像 -->
+                                <img src="../static/images/img-16812086553637fc5cc8435c6ae830761f9fad31e9029.jpg"
+                                    style="width: 38px;height: 38px;border-radius: 5px;">
+                            </figure>
+                            <h5 style="font-size: 1.25rem;">用户</h5>
+                        </div>
+                        <div class="col-md-10 comment-part">
+                            <!-- 这里放星星 -->
+                            <div class="mb-1" id="star-container">
+                                <i class="bi bi-star"></i>
+                                <i class="bi bi-star"></i>
+                                <i class="bi bi-star"></i>
+                                <i class="bi bi-star"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                            <!-- 这里放评论 -->
+                            <h4>评论：</h4>
+                            <p class="mb-0">非常好的词语，使我的屏幕不停地旋转</p>
+                            <div style="display: block;text-align: right;">
+                                <i class="bi bi-heart" id="like-btn"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <!-- <div class="col-lg-4">
+                <p>111</p>
+            </div> -->
 
         </div>
     </div>
@@ -83,7 +117,8 @@
         <div class="row justify-content-center">
 
             <div class="col-lg-5 col-12">
-                <img src="../static/images/rear-view-young-college-student.jpg" class="newsletter-image img-fluid" alt="">
+                <img src="../static/images/rear-view-young-college-student.jpg" class="newsletter-image img-fluid"
+                    alt="">
             </div>
 
             <div class="col-lg-5 col-12 subscribe-form-wrap d-flex justify-content-center align-items-center">
@@ -111,4 +146,26 @@
 <script src="../static/js/bootstrap.bundle.min.js"></script>
 <script src="../static/js/jquery.sticky.js"></script>
 <script src="../static/js/custom.js"></script>
-{% endblock %}
+<script>
+    $(document).ready(function () {
+        // $('#like-btn').on('mouseenter', function () {
+        //     $(this).removeClass('bi-heart').addClass('bi-heart-fill')
+        // })
+
+        // $("#like-btn").on('mouseleave', function () {
+        //     // 切换类为 bi-heart
+        //     $(this).removeClass("bi-heart-fill").addClass("bi-heart");
+        // })
+
+        $('#like-btn').on('click',function(){
+            $(this).removeClass('bi-heart').addClass('bi-heart-fill').toggleClass('like-clicked')
+        })
+
+        $('#star-container i').click(function () {
+            $(this).removeClass('bi-star').addClass('bi-star-fill').addClass('star-clicked').prevAll().removeClass('bi-star').addClass('bi-star-fill').addClass('star-clicked')
+        })
+    })
+</script>
+{% endblock %}starContainer.on('mouseleave', function () {
+stars.removeClass('bi-star-fill').addClass('bi-star');
+});

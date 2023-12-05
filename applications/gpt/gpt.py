@@ -27,7 +27,7 @@ def generate_competitive_analysis_report():
     )
     info = response.choices[0].message['content']
     with open('static/images/' + brand1 + '_' + brand2 + '_report.md', 'w', encoding='utf-8') as file:
-        for record in file:
+        for record in info:
             file.write(record)
 
     _oss_util = OSSUtil()

@@ -28,7 +28,7 @@
 
             <div class="col-12 text-center mt-5">
                 <p class="text-white">
-                    <a href="#" class="btn custom-btn custom-border-btn ms-3">Download</a>
+                    <a href="" id="download-btn" class="btn custom-btn custom-border-btn ms-3" style="display: none;">Download</a>
                 </p>
             </div>
         </div>
@@ -47,6 +47,7 @@
 
 <script>
     $(function(){
+        $('#download-btn').hide()
         $.ajax({
             type:"POST",
             url:"/gpt/twoWord",
@@ -79,7 +80,8 @@
                     '</li>';
                 $('#vertical-scrollable-timeline').append(BlockItem);
             }
-
+            $('#download-btn').attr('href',data.md_path)
+            $('#download-btn').show()
         }
     })
 

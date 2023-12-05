@@ -48,14 +48,13 @@
                             <div>
                                 <h5 class="mb-2">{{ result.seedword.word }}</h5>
                                 <!-- 填入描述性文字 -->
-                                <p class="mb-0">Topic Listing includes home, listing, detail and contact pages. Feel
-                                    free to modify this template for your custom websites.</p>
+                                <p class="mb-0">{{result.seedword.introduction}}</p>
                                 <div class="score-bar">
                                     <h3 class="score-num mb-0">5.0</h3>
                                     <p class="score-people mb-1">1人评分</p>
                                 </div>
                                 <div class="comment-bar">
-                                    <p style="font-size: 14px;padding: 2px;color: rgb(252,141,105);">"手机界的goat"</p>
+                                    <p style="font-size: 14px;padding: 2px;color: rgb(252,141,105);">{{result.seedword.comment}}</p>
                                 </div>
 
                                 <!-- <a href="topics-detail.html" class="btn custom-btn mt-3 mt-lg-4">Learn More</a> -->
@@ -95,14 +94,14 @@
                                 <!-- 每个keyword的描述 -->
                                 <!-- <p class="mb-0">{{result[compWord].introduction}}</p> -->
                                 <p class="mb-0">
-                                    战友们，我们肩负的责任重大，梦想在前方闪耀！今日的拼搏，明日的辉煌！不畏艰难，不惧困境，我们是奋斗在未来之路上的勇者！铸就坚不可摧的决心，冲破一切束缚，向着胜利的彼岸，义无反顾，前行吧！
+                                    {{result[compWord].introduction}}
                                 </p>
                                 <div class="score-bar">
                                     <h3 class="score-num mb-0">5.0</h3>
                                     <p class="score-people mb-1">1人评分</p>
                                 </div>
                                 <div class="comment-bar">
-                                    <p style="font-size: 14px;padding: 2px;color: rgb(252,141,105);">"手机界的goat"</p>
+                                    <p style="font-size: 14px;padding: 2px;color: rgb(252,141,105);">{{ result[compWord].comment }}</p>
                                 </div>
                                 <!-- 这个href的属性也需要进行修改，跳进竞品报告表 -->
                                 <!-- 修改生成竞品分析报告按钮部分 -->
