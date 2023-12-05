@@ -41,6 +41,7 @@ def register():
         user = UserModel()
         user.username = username
         user.password_hash = password
+        user.role = 0
         user.email = email
         user.telephone = telephone
 

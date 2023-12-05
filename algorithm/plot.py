@@ -1,7 +1,6 @@
 # 导入绘图模块
 import matplotlib.pyplot as plt
 import numpy as np
-
 from .compkey_ALG import path_check, get_agencywords
 
 path_check("algorithm/image")
@@ -93,3 +92,4 @@ def plot(seedword):
     plt.close()
 
     return path
+

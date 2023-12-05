@@ -16,7 +16,8 @@
     min-height: 100vh;
 }
 
-.row {
+.row_login {
+    display: flex;
     width: 900px;
     height: 550px;
     border-radius: 10px;
@@ -24,8 +25,9 @@
     box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.2);
 }
 
-.side-image {
+.side-image_hand {
     background-image: url("../images/bg1.jpg");
+    height: 550px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -35,7 +37,7 @@
 
 img {
     width: 35px;
-    position: absolute;
+    /*position: absolute;*/
     top: 30px;
     left: 30px;
 }
@@ -48,7 +50,7 @@ img {
 }
 
 .text p {
-    color: #000;
+    color: #fff;
     font-size: 18px;
 }
 
@@ -153,14 +155,17 @@ span a:hover {
     color: #000;
 }
 
+/*添加一部分来修改顶部栏被篡改的效果*/
+。na
+
 @media only screen and (max-width: 768px) {
-    .side-image {
+    .side-image_hand {
         border-radius: 10px 10px 0 0;
     }
 
     img {
         width: 35px;
-        position: absolute;
+        /*position: absolute;*/
         top: 20px;
         left: 47%;
     }
@@ -176,7 +181,7 @@ span a:hover {
         font-size: 17px;
     }
 
-    .row {
+    .row_login {
         max-width: 420px;
         width: 100%;
     }
