@@ -1,0 +1,55 @@
+#impNoListUl {
+    z-index: 999; !important;
+    position: absolute;!important;
+    list-style-type: none;!important;
+    margin: 0;!important;
+    padding: 8px 0;!important;
+    border: 1px solid #ccc;!important;
+    border-radius: 4px;!important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);!important;
+    background-color: white;!important;
+    max-height: 200px;!important;
+    overflow-y: auto;!important;
+    width: 168px;!important;
+    box-sizing: border-box;!important;
+}
+
+#impNoListUl li {
+    padding: 8px;!important;
+    cursor: pointer;!important;
+    transition: background-color 0.3s;!important;
+}
+
+#impNoListUl li:hover {
+    background-color: #f5f5f5;!important;
+}
+
+#impNoListUl li.no-result {
+    padding: 8px;!important;
+    color: #888;!important;
+}
+
+#impNoListUl li.no-result:hover {
+    background-color: white;!important;
+}
+
+/* 新增样式：调整字体大小、颜色，以及加粗 */
+#impNoListUl li {
+    font-size: 14px;!important;
+    color: #333;!important;
+    font-weight: normal;!important;
+}
+
+#impNoListUl li:hover {
+    background-color: #f1f1f1;!important;
+}
+
+/* 新增样式：为提示框整体加入过渡效果 */
+#impNoListUl {
+    opacity: 0;!important;
+    transition: opacity 0.3s ease-in-out;!important;
+}
+
+#impNoListUl.active {
+    opacity: 1;!important;
+}

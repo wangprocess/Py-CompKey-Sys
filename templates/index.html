@@ -23,13 +23,14 @@
                         </span>
 
                         <input name="seedword" type="search" class="form-control" id="keyword"
-                            placeholder="输入一个种子关键词..." aria-label="Search">
-
+                            placeholder="输入一个种子关键词..." aria-label="Search" onclick="queryAllImpNo()">
                         <button type="submit" class="form-control" id="search-btn">Search</button>
                     </div>
                 </form>
+                <div style="background-color: #ffffff; margin: 0 34px">
+                    <ul id="impNoListUl"></ul>
+                </div>
             </div>
-
         </div>
     </div>
 </section>
@@ -684,32 +685,158 @@
 <script src="../static/js/custom.js"></script>
 
 <script>
-    // $(document).ready(function () {
-    //     $('#search-btn').on('click', (e) => {
-    //         e.preventDefault();
-    //         let keyword = $('#keyword').val()
-    //         if (keyword == '') {
-    //             alert('请输入一个合法的关键词')
-    //         } else {
-    //             console.log(keyword);
-    //             // TODO:请求url，获得数据并实现渲染
-    //             $.ajax({
-    //                 url: "/compkey/getCompword",
-    //                 type: "POST",
-    //                 dataType:"JSON",
-    //                 data: {
-    //                     seedword: keyword
-    //                 },
-    //                 success: (data) => {
-    //                     console.log(data)
-    //                 },
-    //                 error: (e) => {
-    //                     console.log(e)
-    //                 }
-    //             })
-    //         }
-    //     })
+    $(document).ready(function () {
+        $('#search-btn').on('click', (e) => {
+            e.preventDefault();
+            let keyword = $('#keyword').val()
+            if (keyword == '') {
+                alert('请输入一个合法的关键词')
+            } else {
+                console.log(keyword);
+                // TODO:请求url，获得数据并实现渲染
+                $.ajax({
+                    url: "/compkey/getCompword",
+                    type: "POST",
+                    dataType:"JSON",
+                    data: {
+                        seedword: keyword
+                    },
+                    success: (data) => {
+                        console.log(data)
+                    },
+                    error: (e) => {
+                        console.log(e)
+                    }
+                })
+            }
+        })
+    })
+    //等待用户不输入 0.1 秒后再去调用查询接口
+var loseInputMillsecs = 100;
+var clocker = null;
 
-    // })
+// input搜索框的onkeyup事件函数
+
+function queryAllImpNo() {
+    let keyword = $('#keyword').val();
+
+    // if (keyword != null && keyword != '') {
+        if (null == clocker) {
+
+            // 设置的loseInputMillsecs为0.7秒，
+            // setTimeout()函数可以实现等待0.7后调用loadImpNoList方法
+
+            clocker = setTimeout(loadImpNoList, loseInputMillsecs);
+        } else { //连续击键，重新开始计时
+            clearTimeout(clocker);
+            clocker = setTimeout(loadImpNoList, loseInputMillsecs);
+        }
+    // } else {
+    //
+    //     // 此处有可能是查询过一个了，ul列表时有值的
+    //     // 讲道理第二次查询时应该将ul查询数据清空或更新
+    //
+    //     $("#impNoListUl").find('li').remove();
+    // }
+}
+
+// 调用查询接口，并将查询结果动态展示在配置好的ul内
+function loadImpNoList() {
+    // let keyword = $('#keyword').val();
+    // if (keyword == null || keyword == '') {
+    //     return;
+    // }
+    $.ajax({
+    url: "/compkey/getHotwords",
+    type: 'GET',
+    contentType: 'application/json;charset=utf-8', // 设置请求头信息
+    success: function (res) {
+        let data = res.seedwords;  // 在这里进行了更正
+        console.log(data);
+
+        // 每次查询数据时，将前一次查询的数据清除，否则会累加在 ul 中
+        $("#impNoListUl").find('div').remove();
+
+        // 对ul的背景颜色进行渲染
+        $("#impNoListUl").style = 'color:#ffffff !important;'
+
+        // 如果查询结果为空，最好给个提示，否则用户会以为没有这个功能或功能失效
+        if (data == null || data == '' || data.length == 0) {
+            let ele = document.createElement('li');
+            ele.innerText = '(搜索无结果)';
+            $('#impNoListUl').append(ele);
+        } else {
+            for (let i = 0; i < data.length; i++) {
+                // 实现在 ul 中动态创建 li 列表，并将数据置入 li 列表中
+                let ele = document.createElement('li');
+
+                let ele2 = document.createElement('li');
+
+                // 创建包含图片和文字的 div 元素
+                let container = document.createElement('div');
+                container.style.display = 'flex';
+                container.style.paddingRight = '0';
+                container.style.alignItems = 'center'; // 垂直居中对
+
+                // 插入一张图片作为左侧的装饰
+                let img = document.createElement('img');
+                img.src = '../static/images/R.jpg'; // 替换为你的图片路径
+                img.alt = 'fire'; // 替换为你的图片描述
+                img.style.width = '20px'; // 根据需要设置图片宽度
+
+                // 设置图片的样式
+                img.style.marginRight = '8px'; // 根据需要设置图片和文字之间的间距
+
+                // 将图片添加到容器中
+                container.appendChild(img);
+
+                // 设置 li 的样式和文本
+                ele.style.color = '#717275';
+                ele.style.listStyleType = 'none';
+                ele.innerText = data[i].word;  // 注意这里访问 word 属性
+
+                ele2.style.color = '#717275';
+                ele2.style.marginLeft = '600px'
+                ele2.style.listStyleType = 'none';
+                ele2.innerText = data[i].num + "次";  // 注意这里访问 word 属性
+
+                // 把 li 添加到 container 中
+                container.appendChild(ele)
+                container.appendChild(ele2)
+
+                // 将容器添加到 ul 中
+                $('#impNoListUl').append(container);
+            }
+        }
+    }
+});
+}
+
+// 此函数绑定了ul列表的点击事件，点击时实现将选中的值放入input搜索框中，调用页面的查询接口
+
+$(function () {
+    $("#impNoListUl").bind("click", function () {
+
+        //   ul里面那么多li   通过这行代码实现获取鼠标点击的li的值
+        let innerText = document.elementFromPoint(event.clientX, event.clientY).innerText;
+
+      // 如果是没有结果的，就不要获取值了，清除掉返回
+
+      if (innerText == '(搜索无结果)') {
+            $("#impNoListUl").find('li').remove();
+            return;
+        }
+
+        // 将选中的值赋到input中
+        $('#keyword').val(innerText);
+
+        // 已经找到想要的了，ul里面的数据就没必要在占地方了
+        $("#impNoListUl").find('div').remove();
+
+        // 调用页面查询按钮接口，返回页面结果。
+        $('#search-btn').click();
+    });
+});
+
 </script>
 {% endblock %}
