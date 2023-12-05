@@ -30,6 +30,7 @@ class SeedWordModel(db.Model):
     num = db.Column(db.Integer, comment='被搜索的次数', default=0)
     image = db.Column(db.Integer, db.ForeignKey("oss.id"), comment='种子关键词的图片，存的是oss对象的id')
     chart = db.Column(db.Integer, db.ForeignKey("oss.id"), comment='种子关键词相关的竞争性关键词的分析表，存的是oss对象的id')
+    word_cloud = db.Column(db.Integer, db.ForeignKey("oss.id"), comment='种子关键词相关的竞争性关键词词云，存的是oss对象的id')
     compwords = db.relationship('SeedwordCompword')
 
 

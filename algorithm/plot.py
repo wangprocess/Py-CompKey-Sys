@@ -85,7 +85,11 @@ def plot(seedword):
     # 调整子图的间距
     plt.tight_layout()
 
-    plt.savefig('algorithm/image/' + seedword + '_compkeys.jpg')
+    path = 'algorithm/image/' + seedword + '_compkeys.jpg'
+
+    plt.savefig(path)
     # 显示图形
 
     plt.close()
+
+    return path

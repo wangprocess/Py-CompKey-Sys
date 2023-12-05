@@ -50,6 +50,7 @@ def generate_word_analysis_report():
 def generate_image():
     imageGen = request.form['imageGen']
     api_key = "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"
+    # prompt = f"现在，当我想要你生成照片/图片时。使用Unsplash APl(https://source.unsplash.com/1280x720/?<PUT YOUR QUERY HERE >)。如果听懂了不需要回复，请生成{imageGen}的图片，只需要给我一个链接，不要回复其他任何内容"
     prompt = f"现在，当我想要你生成照片/图片时，用3/8Markdown 写，不要有反斜钱,不要用代码块。使用Unsplash APl(https://source.unsplash.com/1280x720/?<PUT YOUR QUERY HERE >)。如果听懂了请回复明白，以后都需要这样，请生成{imageGen}的图片"
     response = openai.ChatCompletion.create(
         model="gpt-4-1106-preview",
