@@ -12,13 +12,13 @@
             <div class="col-lg-5 col-12">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Homepage</a></li>
+                        <li class="breadcrumb-item"><a href="/">Homepage</a></li>
 
-                        <li class="breadcrumb-item active" aria-current="page">Topics Listing</li>
+                        <li class="breadcrumb-item active" aria-current="page">竞品关键词</li>
                     </ol>
                 </nav>
 
-                <h2 class="text-white">Topics Listing</h2>
+                <h2 class="text-white">生成竞品关键词</h2>
             </div>
 
         </div>
@@ -56,9 +56,14 @@
                                 <a href="topics-detail.html" class="btn custom-btn mt-3 mt-lg-4">Learn More</a>
                             </div>
 
-                            <span class="badge bg-design rounded-pill ms-auto"></span>
+                            <!-- <span class="badge bg-design rounded-pill ms-auto"></span> -->
                         </div>
                     </div>
+                </div>
+
+                <div class="col-lg-12 col-12 text-center">
+                    <!-- <h3 class="mb-4">{{result.seedword.word}}竞品关键词</h3> -->
+                    <h1 class="mb-4" style="color: red;">VS</h1>
                 </div>
 
                 <div class="col-lg-12 col-12 text-center">
@@ -75,7 +80,7 @@
                                 <!-- 跳转进去到评论详情页面 -->
                                 <a href="">
                                     <img src="{{ result[compWord].image }}"
-                                        class="custom-block-image img-fluid" alt="">
+                                        class="custom-block-image img-fluid" alt="" style="width: 350px;">
                                 </a>
 
                                 <div class="custom-block-topics-listing-info d-flex">
@@ -83,9 +88,8 @@
                                         <!-- 每个keyword的name -->
                                         <h5 class="mb-2">{{ result[compWord].word }}</h5>
                                         <!-- 每个keyword的描述 -->
-                                        <p class="mb-0">Visit TemplateMo website to download free CSS templates. Lorem ipsum
-                                            dolor, sit amet consectetur adipisicing elit animi necessitatibus</p>
-
+                                        <!-- <p class="mb-0">{{result[compWord].introduction}}</p> -->
+                                        <p class="mb-0">战友们，我们肩负的责任重大，梦想在前方闪耀！今日的拼搏，明日的辉煌！不畏艰难，不惧困境，我们是奋斗在未来之路上的勇者！铸就坚不可摧的决心，冲破一切束缚，向着胜利的彼岸，义无反顾，前行吧！</p>
                                         <div class="score-bar">
                                             <h3 class="score-num mb-0">5.0</h3>
                                             <p class="score-people mb-1">1人评分</p>
@@ -117,7 +121,7 @@
         <div class="row">
 
             <div class="col-lg-12 col-12">
-                <h3 class="mb-4">Trending Topics</h3>
+                <h3 class="mb-4">可视化数据分析</h3>
             </div>
 
             <div class="col-lg-6 col-md-6 col-12 mt-3 mb-4 mb-lg-0">
@@ -125,32 +129,50 @@
                     <a href="topics-detail.html">
                         <div class="d-flex">
                             <div>
-                                <h5 class="mb-2">Investment</h5>
+                                <h5 class="mb-2">柱状图</h5>
 
-                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                <p class="mb-0">种子关键词与竞争关键词comp度介绍</p>
                             </div>
 
                             <span class="badge bg-finance rounded-pill ms-auto">30</span>
                         </div>
 
-                        <img src="../static/images/topics/undraw_Finance_re_gnv2.png"
-                            class="custom-block-image img-fluid" alt="">
+                        <img src="{{result.seedword.chart}}"
+                            class="custom-block-image img-fluid" style="width: 550px;height: 350px;" alt="">
                     </a>
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-6 col-12 mt-lg-3">
+            <div class="col-lg-6 col-md-6 col-12 mt-3 mb-4 mb-lg-0">
+                <div class="custom-block bg-white shadow-lg">
+                    <a href="topics-detail.html">
+                        <div class="d-flex">
+                            <div>
+                                <h5 class="mb-2">词云</h5>
+
+                                <p class="mb-0">直观显示种子关键词和竞争关键词信息</p>
+                            </div>
+
+                            <span class="badge bg-finance rounded-pill ms-auto">30</span>
+                        </div>
+
+                        <img src="{{result.seedword.word_cloud}}"
+                            class="custom-block-image img-fluid" style="width: 550px;height: 350px;" alt="">
+                    </a>
+                </div>
+            </div>
+
+            <!-- <div class="col-lg-6 col-md-6 col-12 mt-lg-3">
                 <div class="custom-block custom-block-overlay">
                     <div class="d-flex flex-column h-100">
-                        <img src="../static/images/businesswoman-using-tablet-analysis.jpg"
+                        <img src="{{result.seedword.word_cloud}}"
                             class="custom-block-image img-fluid" alt="">
 
                         <div class="custom-block-overlay-text d-flex">
                             <div>
-                                <h5 class="text-white mb-2">Finance</h5>
+                                <h5 class="text-white mb-2">词云</h5>
 
-                                <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint
-                                    animi necessitatibus aperiam repudiandae nam omnis</p>
+                                <p class="text-white">直观显示种子关键词和竞争关键词信息</p>
 
                                 <a href="topics-detail.html" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
                             </div>
@@ -181,7 +203,7 @@
                         <div class="section-overlay"></div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>
