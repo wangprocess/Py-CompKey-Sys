@@ -21,9 +21,8 @@
                         <span class="input-group-text bi-search" id="basic-addon1">
 
                         </span>
-
-                        <input name="seedword" type="search" class="form-control" id="keyword"
-                            placeholder="输入一个种子关键词..." aria-label="Search" onclick="queryAllImpNo()">
+                            <input name="seedword" type="search" class="form-control" id="keyword"
+                                placeholder="输入一个种子关键词..." aria-label="Search" onclick="queryAllImpNo()" onkeydown="if(event.keyCode===13) { return handleSearch(); }">
                         <button type="submit" class="form-control">Search</button>
                     </div>
                 </form>
@@ -711,9 +710,15 @@
             }
         })
     })
-    //等待用户不输入 0.1 秒后再去调用查询接口
-var loseInputMillsecs = 100;
+    //等待用户不输入 0 秒后再去调用查询接口
+var loseInputMillsecs = 0;
 var clocker = null;
+
+function handleSearch() {
+        // 执行你的搜索逻辑
+        // 返回 false 阻止默认的表单提交行为
+        return true;
+    }
 
 // input搜索框的onkeyup事件函数
 
@@ -746,6 +751,8 @@ function loadImpNoList() {
     // if (keyword == null || keyword == '') {
     //     return;
     // }
+    let shouldHide = true;
+
     $.ajax({
     url: "/compkey/getHotwords",
     type: 'GET',
@@ -759,6 +766,7 @@ function loadImpNoList() {
 
         // 对ul的背景颜色进行渲染
         $("#impNoListUl").style = 'color:#ffffff !important;'
+        $("#impNoListUl").show();
 
         // 如果查询结果为空，最好给个提示，否则用户会以为没有这个功能或功能失效
         if (data == null || data == '' || data.length == 0) {
@@ -814,7 +822,19 @@ function loadImpNoList() {
             $('#impNoListUl').append(ele);
         }
     }
-});
+    });
+
+    // // 点击提示框内的元素时设置 shouldHide 为 false
+    // $("#impNoListUl").on("click", function (event) {
+    //     shouldHide = false;
+    // });
+    //
+    // // 在文本框失去焦点时隐藏提示框（除非点击了提示框内的元素）
+    // $("#keyword").blur(function (event) {
+    //     if (shouldHide) {
+    //         $("#impNoListUl").hide();
+    //     }
+    // });
 }
 
 // 此函数绑定了ul列表的点击事件，点击时实现将选中的值放入input搜索框中，调用页面的查询接口
