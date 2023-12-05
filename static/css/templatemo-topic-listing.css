@@ -1037,6 +1037,12 @@ blockquote {
   color: var(--white-color);
 }
 
+/*---------------------------------------
+  界面部分修改               
+-----------------------------------------*/
+.comment-bar {
+  background-image: linear-gradient(to right, rgba(255,248,232), transparent);
+}
 
 /*---------------------------------------
   RESPONSIVE STYLES               

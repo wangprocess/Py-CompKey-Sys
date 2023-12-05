@@ -25,11 +25,16 @@ def is_agencyword_existed(agencyword):
     return bool(res)
 
 
-@compkey_blue.route('/getCompword', methods=['POST'])
+@compkey_blue.route('/lists', methods=['GET'])
 def get_compword():
-    if request.method == 'POST':
-        seedword = request.form.get('seedword')
-        result = {}
+    print("你好")
+    if request.method == 'GET':
+        seedword = request.args.get('seedword',type=str)
+        # seedword = request.form.get('seedword')
+        print("seedword如下:")
+        print(seedword)
+        print("结束")
+        result = {'seedword': {'word': seedword}}
         if is_seedword_searched(seedword):
             seedword_model = SeedWordModel.query.filter_by(word=seedword).first()
             seedword_model.num += 1

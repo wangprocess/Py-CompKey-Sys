@@ -31,21 +31,27 @@
         <div class="row">
 
             <div class="col-lg-12 col-12 text-center">
-                <h3 class="mb-4">Popular Topics</h3>
+                <!-- <h3 class="mb-4">{{result.seedword.word}}竞品关键词</h3> -->
+                <h3 class="mb-4">种子关键词</h3>
             </div>
 
             <div class="col-lg-8 col-12 mt-3 mx-auto">
+                <!-- 这里第一个渲染种子关键词的内容 -->
                 <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
                     <div class="d-flex">
-                        <img src="../static/images/topics/undraw_Remote_design_team_re_urdx.png"
-                            class="custom-block-image img-fluid" alt="">
-
+                        <!-- TODO：需要添加href属性哦 -->
+                        <!-- 所以点击图片还跳吧应该 -->
+                        <a href="">
+                            <img src="../static/images/topics/undraw_Remote_design_team_re_urdx.png"
+                                class="custom-block-image img-fluid" alt="">
+                        </a>
                         <div class="custom-block-topics-listing-info d-flex">
                             <div>
-                                <h5 class="mb-2">Web Design</h5>
-
+                                <h5 class="mb-2">{{result.seedword.word}}</h5>
+                                <!-- 填入描述性文字 -->
                                 <p class="mb-0">Topic Listing includes home, listing, detail and contact pages. Feel
                                     free to modify this template for your custom websites.</p>
+
 
                                 <a href="topics-detail.html" class="btn custom-btn mt-3 mt-lg-4">Learn More</a>
                             </div>
@@ -55,27 +61,46 @@
                     </div>
                 </div>
 
-                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
-                    <div class="d-flex">
-                        <img src="../static/images/topics/undraw_online_ad_re_ol62.png" class="custom-block-image img-fluid"
-                            alt="">
-
-                        <div class="custom-block-topics-listing-info d-flex">
-                            <div>
-                                <h5 class="mb-2">Advertising</h5>
-
-                                <p class="mb-0">Visit TemplateMo website to download free CSS templates. Lorem ipsum
-                                    dolor, sit amet consectetur adipisicing elit animi necessitatibus</p>
-
-                                <a href="topics-detail.html" class="btn custom-btn mt-3 mt-lg-4">Learn More</a>
-                            </div>
-
-                            <span class="badge bg-advertising rounded-pill ms-auto">30</span>
-                        </div>
-                    </div>
+                <div class="col-lg-12 col-12 text-center">
+                    <!-- <h3 class="mb-4">{{result.seedword.word}}竞品关键词</h3> -->
+                    <h3 class="mb-4">竞品关键词</h3>
                 </div>
 
-                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                <!-- 这里之后用jinja2的for循环来渲染各个竞争性关键词 -->
+                {% for compWord in result %}
+                    {% if result[compWord].word != result.seedword.word %}                    
+                        <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                            <div class="d-flex">
+                                <!-- img的src属性修改 -->
+                                <!-- 跳转进去到评论详情页面 -->
+                                <a href="">
+                                    <img src="../static/images/topics/undraw_online_ad_re_ol62.png"
+                                        class="custom-block-image img-fluid" alt="">
+                                </a>
+
+                                <div class="custom-block-topics-listing-info d-flex">
+                                    <div>
+                                        <!-- 每个keyword的name -->
+                                        <h5 class="mb-2">{{result[compWord].word}}</h5>
+                                        <!-- 每个keyword的描述 -->
+                                        <p class="mb-0">Visit TemplateMo website to download free CSS templates. Lorem ipsum
+                                            dolor, sit amet consectetur adipisicing elit animi necessitatibus</p>
+
+                                        <div class="mt-4 comment-bar">
+                                            <p style="font-size: 14px;padding: 2px;color: rgb(252,141,105);">"手机界的goat"</p>
+                                        </div>
+                                        <!-- 这个href的属性也需要进行修改，跳进竞品报告表 -->
+                                        <a href="topics-detail.html" class="btn custom-btn mt-1 mt-lg-4">Learn More</a>
+                                    </div>
+                                    <!-- 这个写comp度 -->
+                                    <span class="badge bg-advertising rounded-pill ms-auto" style="height: 30px;width: 38px;">{{result[compWord].comp|round(4)}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+                <!-- <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
                     <div class="d-flex">
                         <img src="../static/images/topics/undraw_Podcast_audience_re_4i5q.png"
                             class="custom-block-image img-fluid" alt="">
@@ -93,10 +118,10 @@
                             <span class="badge bg-music rounded-pill ms-auto">20</span>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
-            <div class="col-lg-12 col-12">
+            <!-- <div class="col-lg-12 col-12">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-center mb-0">
                         <li class="page-item">
@@ -132,7 +157,7 @@
                         </li>
                     </ul>
                 </nav>
-            </div>
+            </div> -->
 
         </div>
     </div>
@@ -160,7 +185,8 @@
                             <span class="badge bg-finance rounded-pill ms-auto">30</span>
                         </div>
 
-                        <img src="../static/images/topics/undraw_Finance_re_gnv2.png" class="custom-block-image img-fluid" alt="">
+                        <img src="../static/images/topics/undraw_Finance_re_gnv2.png"
+                            class="custom-block-image img-fluid" alt="">
                     </a>
                 </div>
             </div>
@@ -168,8 +194,8 @@
             <div class="col-lg-6 col-md-6 col-12 mt-lg-3">
                 <div class="custom-block custom-block-overlay">
                     <div class="d-flex flex-column h-100">
-                        <img src="../static/images/businesswoman-using-tablet-analysis.jpg" class="custom-block-image img-fluid"
-                            alt="">
+                        <img src="../static/images/businesswoman-using-tablet-analysis.jpg"
+                            class="custom-block-image img-fluid" alt="">
 
                         <div class="custom-block-overlay-text d-flex">
                             <div>
