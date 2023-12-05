@@ -5,6 +5,7 @@
 {% endblock %}
 {% block body %}
 <!-- TODO:写入主体页面内容 -->
+
 <section class="timeline-section section-padding" id="section_3">
     <div class="section-overlay"></div>
 
@@ -27,8 +28,7 @@
 
             <div class="col-12 text-center mt-5">
                 <p class="text-white">
-                    Want to learn more?
-                    <a href="#" class="btn custom-btn custom-border-btn ms-3">Check out Youtube</a>
+                    <a href="#" class="btn custom-btn custom-border-btn ms-3">Download</a>
                 </p>
             </div>
         </div>
@@ -52,8 +52,8 @@
             url:"/gpt/twoWord",
             dataType:"JSON",
             data: {
-                brand1: '小米',
-                brand2: '华为'
+                brand1: "{{seedword}}",
+                brand2: "{{compword}}"
             },
             success:function(res){
                show(res)
