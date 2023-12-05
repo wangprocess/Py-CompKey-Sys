@@ -28,13 +28,9 @@ def is_agencyword_existed(agencyword):
 
 @compkey_blue.route('/lists', methods=['GET'])
 def get_compword():
-    print("你好")
     if request.method == 'GET':
-        seedword = request.args.get('seedword',type=str)
+        seedword = request.args.get('seedword', type=str)
         # seedword = request.form.get('seedword')
-        print("seedword如下:")
-        print(seedword)
-        print("结束")
         result = {'seedword': {'word': seedword}}
         if is_seedword_searched(seedword):
             seedword_model = SeedWordModel.query.filter_by(word=seedword).first()

@@ -8,6 +8,7 @@ path_check("algorithm/image")
 
 def plot(seedword):
     plt.cla()
+    plt.figure(figsize=(6, 5))  # 创建一个新的图表
     comp_list = []
     compkey_list = []
 
@@ -92,4 +93,6 @@ def plot(seedword):
     plt.close()
 
     return path
+
+
 
