@@ -24,7 +24,7 @@
 
                         <input name="seedword" type="search" class="form-control" id="keyword"
                             placeholder="输入一个种子关键词..." aria-label="Search" onclick="queryAllImpNo()">
-                        <button type="submit" class="form-control" id="search-btn">Search</button>
+                        <button type="submit" class="form-control">Search</button>
                     </div>
                 </form>
                 <div style="background-color: #ffffff; margin: 0 34px">
@@ -695,8 +695,8 @@
                 console.log(keyword);
                 // TODO:请求url，获得数据并实现渲染
                 $.ajax({
-                    url: "/compkey/getCompword",
-                    type: "POST",
+                    url: "/compkey/lists",
+                    type: "GET",
                     dataType:"JSON",
                     data: {
                         seedword: keyword
@@ -793,6 +793,7 @@ function loadImpNoList() {
                 // 设置 li 的样式和文本
                 ele.style.color = '#717275';
                 ele.style.listStyleType = 'none';
+                ele.style.paddingBottom = '10px'
                 ele.innerText = data[i].word;  // 注意这里访问 word 属性
 
                 ele2.style.color = '#717275';
@@ -807,6 +808,10 @@ function loadImpNoList() {
                 // 将容器添加到 ul 中
                 $('#impNoListUl').append(container);
             }
+            let ele = document.createElement('li');
+            ele.style.listStyleType = 'none';
+            ele.innerText = '     ';  // 注意这里访问 word 属性
+            $('#impNoListUl').append(ele);
         }
     }
 });
@@ -834,7 +839,7 @@ $(function () {
         $("#impNoListUl").find('div').remove();
 
         // 调用页面查询按钮接口，返回页面结果。
-        $('#search-btn').click();
+        // $('#search-btn').click();
     });
 });
 
