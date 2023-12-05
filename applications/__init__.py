@@ -33,12 +33,14 @@ def create_app():
     from .users import user_blue
     from .views import index_bp
     from .gpt import gpt
+    from .comments import comment_blue
 
     import models
     # 注册蓝图
     app.register_blueprint(compkey_blue, url_prefix='/compkey')
     app.register_blueprint(user_blue, url_prefix='/user')
     app.register_blueprint(gpt, url_prefix='/gpt')
+    app.register_blueprint(comment_blue, url_prefix='/comment')
     app.register_blueprint(index_bp)
 
     return app

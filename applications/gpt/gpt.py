@@ -34,7 +34,7 @@ def generate_competitive_analysis_report():
 def generate_word_analysis_report():
     brand1 = request.form['brand1']
     api_key = "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"
-    prompt = f" 请注意不要有任何和时间相关的警告说明，请用中文回答并生成一个文档来简单的介绍{brand1}"
+    prompt = f" 请注意不要有任何和时间相关的警告说明，请用中文回答并简单的介绍{brand1},尽量少而精炼"
     response = openai.ChatCompletion.create(
         model="gpt-4-1106-preview",
         messages=[{"role": "system", "content": "You are a knowledgeable assistant."},

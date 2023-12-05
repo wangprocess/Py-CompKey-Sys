@@ -4,7 +4,6 @@ from flask_login import LoginManager, login_user, logout_user, login_required, U
 from flask import Flask, request, session, redirect
 from extensions import db
 
-app = Flask(__name__)
 
 @user_blue.route('/getUser', methods=['GET'])
 def get_user():

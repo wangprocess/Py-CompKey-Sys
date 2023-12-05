@@ -31,9 +31,10 @@ class SeedWordModel(db.Model):
     word = db.Column(db.String(20), comment='种子关键词名称')
     num = db.Column(db.Integer, comment='被搜索的次数', default=0)
     grade = db.Column(db.Float, comment='所有用户评的分的平均分，种子关键词的分')
-    image = db.Column(db.Integer, db.ForeignKey("oss.id"), comment='种子关键词的图片，存的是oss对象的id')
-    chart = db.Column(db.Integer, db.ForeignKey("oss.id"), comment='种子关键词相关的竞争性关键词的分析表，存的是oss对象的id')
-    word_cloud = db.Column(db.Integer, db.ForeignKey("oss.id"), comment='种子关键词相关的竞争性关键词词云，存的是oss对象的id')
+    introduction = db.Column(db.String(500), comment='种子关键词的描述', default="等你来说说TA是什么水平")
+    image = db.Column(db.Integer, db.ForeignKey("oss.id"), comment='种子关键词的图片，存的是oss对象的id', default=1)
+    chart = db.Column(db.Integer, db.ForeignKey("oss.id"), comment='种子关键词相关的竞争性关键词的分析表，存的是oss对象的id', default=1)
+    word_cloud = db.Column(db.Integer, db.ForeignKey("oss.id"), comment='种子关键词相关的竞争性关键词词云，存的是oss对象的id', default=1)
     compwords = db.relationship('SeedwordCompword')
 
 
@@ -41,11 +42,11 @@ class CompWordModel(db.Model):
     __tablename__ = 'compword'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True, comment='种子关键词的ID')
     word = db.Column(db.String(20), comment='竞争关键词名称')
-    image = db.Column(db.Integer, db.ForeignKey("oss.id"), comment='竞争性关键词的图片，存的是oss对象的id')
+    introduction = db.Column(db.String(500), comment='种子关键词的描述', default="等你来说说TA是什么水平")
+    image = db.Column(db.Integer, db.ForeignKey("oss.id"), comment='竞争性关键词的图片，存的是oss对象的id', default=1)
 
 
 class AgencyWordModel(db.Model):
     __tablename__ = 'agencyword'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True, comment='种子关键词的ID')
     word = db.Column(db.String(20), comment='中介关键词名称')
-    image = db.Column(db.Integer, db.ForeignKey("oss.id"), comment='中介关键词的图片，存的是oss对象的id')

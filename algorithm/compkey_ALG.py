@@ -459,3 +459,26 @@ def compkey_alg(seedwords_list):
                 compkey = info[0][6:]
                 if compkey not in agencywords_list:
                     outputfile.write(record)
+
+    count = 0
+    get_num = 10
+    result = {}
+    for seedword in seedwords_list:
+        with open('algorithm/comp_plus/seedword_' + seedword + '.txt', 'r', encoding='utf-8') as file:
+            for record in file:
+                info = record.split("||")
+                compkey = info[0][6:]
+                comp = info[1][5:]
+                agency_list = info[2][9:].split(",")
+                result[str(count+1)] = {
+                    'compkey': compkey,
+                    'comp': comp,
+                    'agency_list': agency_list
+                }
+                count += 1
+                if count == get_num:
+                    break
+
+    return result
+
+
