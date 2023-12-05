@@ -7,9 +7,11 @@ from applications.users import *
 def login_index():
     return render_template('new_login.html')
 
+
 @index_bp.route('/register')
 def register_index():
     return render_template('register.html')
+
 
 @index_bp.route('/')
 def index_page():
@@ -25,12 +27,14 @@ def detail_page():
 # def list_page():
 #     return render_template('topic-listing.html')
 
-@index_bp.route('/report')
+@index_bp.route('/report', methods=['GET'])
 def report_page():
-    return render_template('keyword-report.html')
+    seedword = request.args.get('seedword')
+    compword = request.args.get('compword')
+    # 在这里可以使用 seedword 和 compword 进行相应的处理
+    return render_template('keyword-report.html', seedword=seedword, compword=compword)
+
 
 @index_bp.route('/vip')
 def vip_page():
     return render_template('vip-confirm.html')
-
-
