@@ -21,9 +21,9 @@ def detail_page():
     return render_template('topic-details.html')
 
 
-@index_bp.route('/lists/<seedword>')
-def list_page(seedword):
-    return render_template('topic-listing.html', keyword=seedword)
+# @index_bp.route('/lists')
+# def list_page():
+#     return render_template('topic-listing.html')
 
 @index_bp.route('/report')
 def report_page():

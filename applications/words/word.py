@@ -4,7 +4,7 @@ from flask import request
 from algorithm import compkey_alg, plot
 from extensions import db
 from utils import success_api, fail_api, data_api
-from flask import render_template
+from flask import render_template,url_for,redirect,jsonify
 
 
 def is_seedword_searched(seedword):
@@ -25,10 +25,15 @@ def is_agencyword_existed(agencyword):
     return bool(res)
 
 
-@compkey_blue.route('/getCompword', methods=['POST'])
+@compkey_blue.route('/lists', methods=['GET'])
 def get_compword():
-    if request.method == 'POST':
-        seedword = request.form.get('seedword')
+    print("你好")
+    if request.method == 'GET':
+        seedword = request.args.get('seedword',type=str)
+        # seedword = request.form.get('seedword')
+        print("seedword如下:")
+        print(seedword)
+        print("结束")
         result = {'seedword': {'word': seedword}}
         if is_seedword_searched(seedword):
             seedword_model = SeedWordModel.query.filter_by(word=seedword).first()
@@ -39,7 +44,9 @@ def get_compword():
             for middle in seedword_model.compwords:
                 result['compword'+str(count)] = {'word': middle.compword.word, 'comp': middle.comp_value}
                 count += 1
-
+            # return result
+            print(result)
+            # result = jsonify(result)
             return render_template('topic-listing.html', result=result)
 
         else:

@@ -16,14 +16,14 @@
                 <!-- <h6 class="text-center">platform for creatives around the world</h6> -->
                 <h6 class="text-center">comparison is all you need!</h6>
                 <!-- 这里这个method可以去掉 -->
-                <form class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
+                <form method="get" action="/compkey/lists" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
                     <div class="input-group input-group-lg">
                         <span class="input-group-text bi-search" id="basic-addon1">
 
                         </span>
 
-                        <input name="keyword" type="search" class="form-control" id="keyword" placeholder="输入一个种子关键词..."
-                            aria-label="Search">
+                        <input name="seedword" type="search" class="form-control" id="keyword"
+                            placeholder="输入一个种子关键词..." aria-label="Search">
 
                         <button type="submit" class="form-control" id="search-btn">Search</button>
                     </div>
@@ -684,32 +684,32 @@
 <script src="../static/js/custom.js"></script>
 
 <script>
-    $(document).ready(function () {
-        $('#search-btn').on('click', (e) => {
-            e.preventDefault();
-            let keyword = $('#keyword').val()
-            if (keyword == '') {
-                alert('请输入一个合法的关键词')
-            } else {
-                console.log(keyword);
-                // TODO:请求url，获得数据并实现渲染
-                $.ajax({
-                    url: "/compkey/getCompword",
-                    type: "POST",
-                    dataType:"JSON",
-                    data: {
-                        seedword: keyword
-                    },
-                    success: (data) => {
-                        console.log(data)
-                    },
-                    error: (e) => {
-                        console.log(e)
-                    }
-                })
-            }
-        })
+    // $(document).ready(function () {
+    //     $('#search-btn').on('click', (e) => {
+    //         e.preventDefault();
+    //         let keyword = $('#keyword').val()
+    //         if (keyword == '') {
+    //             alert('请输入一个合法的关键词')
+    //         } else {
+    //             console.log(keyword);
+    //             // TODO:请求url，获得数据并实现渲染
+    //             $.ajax({
+    //                 url: "/compkey/getCompword",
+    //                 type: "POST",
+    //                 dataType:"JSON",
+    //                 data: {
+    //                     seedword: keyword
+    //                 },
+    //                 success: (data) => {
+    //                     console.log(data)
+    //                 },
+    //                 error: (e) => {
+    //                     console.log(e)
+    //                 }
+    //             })
+    //         }
+    //     })
 
-    })
+    // })
 </script>
 {% endblock %}
