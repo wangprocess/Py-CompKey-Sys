@@ -1,7 +1,6 @@
 # 导入绘图模块
 import matplotlib.pyplot as plt
 import numpy as np
-
 from .compkey_ALG import path_check, get_agencywords
 
 path_check("algorithm/image")
@@ -85,7 +84,12 @@ def plot(seedword):
     # 调整子图的间距
     plt.tight_layout()
 
-    plt.savefig('algorithm/image/' + seedword + '_compkeys.jpg')
+    path = 'algorithm/image/' + seedword + '_compkeys.jpg'
+
+    plt.savefig(path)
     # 显示图形
 
     plt.close()
+
+    return path
+

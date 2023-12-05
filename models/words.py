@@ -19,6 +19,8 @@ class SeedwordCompword(db.Model):
     seedword_id = db.Column(db.Integer, db.ForeignKey("seedword.id"), comment='种子关键词编号')  # 属性 外键
     compword_id = db.Column(db.Integer, db.ForeignKey("compword.id"), comment='竞争关键词编号')  # 属性 外键
     comp_value = db.Column(db.Float, comment='竞争度的值，comp值')
+    grade = db.Column(db.Float, comment='所有用户评的分的平均分，在一个种子关键词下，该竞争关键词的分')
+    # 也就是说相同的一个词，作为种子关键词和作为某一个种子关键词下的竞争性关键词是不一样的，评分评论系统是按照一组词，即种子关键词及其对应的竞争性关键词来设计的
     compword = db.relationship("CompWordModel")
     agencywords = db.relationship('AgencyWordModel', secondary="used_agencyword")
 
@@ -28,8 +30,10 @@ class SeedWordModel(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True, comment='种子关键词的ID')
     word = db.Column(db.String(20), comment='种子关键词名称')
     num = db.Column(db.Integer, comment='被搜索的次数', default=0)
+    grade = db.Column(db.Float, comment='所有用户评的分的平均分，种子关键词的分')
     image = db.Column(db.Integer, db.ForeignKey("oss.id"), comment='种子关键词的图片，存的是oss对象的id')
     chart = db.Column(db.Integer, db.ForeignKey("oss.id"), comment='种子关键词相关的竞争性关键词的分析表，存的是oss对象的id')
+    word_cloud = db.Column(db.Integer, db.ForeignKey("oss.id"), comment='种子关键词相关的竞争性关键词词云，存的是oss对象的id')
     compwords = db.relationship('SeedwordCompword')
 
 
