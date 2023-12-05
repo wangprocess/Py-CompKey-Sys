@@ -53,31 +53,17 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_2">Browse Topics</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_3">How it works</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link click-scroll" href="#section_4">FAQs</a>
-                        </li>
-
-                        <li class="nav-item">
                             <a class="nav-link click-scroll" href="#section_5">Contact</a>
                         </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
-
-                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                                <li><a class="dropdown-item" href="/lists">Topics Listing</a></li>
-
-                                <li><a class="dropdown-item" href="contact.html">Contact Form</a></li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="https://www.csu.edu.cn/">Central South University</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="https://gitee.com/jiayouquba">Gitee</a>
+                        </li>
+
                         {% if 'username' in session %}
                             <li class="nav-item">
                                 <span class="nav-link">Welcome, {{ session['username'] }}!</span>
@@ -89,7 +75,7 @@
                             {% if session['role'] == 0 %}
                                 <span class="nav-link">普通用户</span>
                             <li class="nav-item">
-                                <a class="nav-link click-scroll" href="/vip">VIP Application</a>
+                                <a class="nav-link" href="/vip">VIP Application</a>
                             </li>
                             {% elif session['role'] == 1 %}
                                 <span class="nav-link">尊贵的VIP用户</span>
@@ -118,23 +104,23 @@
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-6">
-                    <h6 class="site-footer-title mb-3">Resources</h6>
+                    <h6 class="site-footer-title mb-3">Members</h6>
 
                     <ul class="site-footer-links">
                         <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Home</a>
+                            <a href="" class="site-footer-link">葛逸凡</a>
                         </li>
 
                         <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">How it works</a>
+                            <a href="" class="site-footer-link">王锦灿</a>
                         </li>
 
                         <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">FAQs</a>
+                            <a href="" class="site-footer-link">陈雄涛</a>
                         </li>
 
                         <li class="site-footer-link-item">
-                            <a href="#" class="site-footer-link">Contact</a>
+                            <a href="" class="site-footer-link">周宇露</a>
                         </li>
                     </ul>
                 </div>

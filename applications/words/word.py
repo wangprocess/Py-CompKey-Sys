@@ -1,5 +1,5 @@
 from applications.words import compkey_blue
-from models import SeedWordModel, CompWordModel, SeedwordCompword, AgencyWordModel, OssModel
+from models import SeedWordModel, CompWordModel, SeedwordCompword, AgencyWordModel, OssModel, CommentModel
 from flask import request
 from algorithm import compkey_alg, plot, get_agencywords, plot_cloud
 from extensions import db
@@ -40,22 +40,26 @@ def get_compword():
             oss_model_image = OssModel.query.filter_by(id=seedword_model.image).first()
             oss_model_chart = OssModel.query.filter_by(id=seedword_model.chart).first()
             oss_model_wordcloud = OssModel.query.filter_by(id=seedword_model.word_cloud).first()
+            comment_model = CommentModel.query.filter_by(seedword_id=seedword_model.id, compword_id=seedword_model.id).order_by(desc(CommentModel.like)).first()
 
             result['seedword'] = {
                 'word': seedword,
                 'image': oss_model_image.path if oss_model_image else 'https://business-03.oss-cn-hangzhou.aliyuncs.com/images/1b685172-9324-11ee-b9f6-744ca17172e4.png',
                 'chart': oss_model_chart.path if oss_model_chart else 'https://business-03.oss-cn-hangzhou.aliyuncs.com/images/1b685172-9324-11ee-b9f6-744ca17172e4.png',
                 'word_cloud': oss_model_wordcloud.path if oss_model_wordcloud else 'https://business-03.oss-cn-hangzhou.aliyuncs.com/images/1b685172-9324-11ee-b9f6-744ca17172e4.png',
-                'introduction': seedword_model.introduction if seedword_model.introduction else '史'
+                'introduction': seedword_model.introduction if seedword_model.introduction else '中南大学，铁道学院，知行合一，经世致用，前程似锦，灿烂光明，电子商务，问题不大，继续努力',
+                'comment': comment_model.text if comment_model else '等你来说说TA是什么水平'
             }
             count = 1
             for middle in seedword_model.compwords:
                 oss_model_image = OssModel.query.filter_by(id=middle.compword.image).first()
+                comment_model = CommentModel.query.filter_by(seedword_id=seedword_model.id, compword_id=middle.compword.id).order_by(desc(CommentModel.like)).first()
                 result['compword' + str(count)] = {
                     'word': middle.compword.word,
                     'comp': middle.comp_value,
                     'image': oss_model_image.path if oss_model_image else 'https://business-03.oss-cn-hangzhou.aliyuncs.com/images/1b685172-9324-11ee-b9f6-744ca17172e4.png',
-                    'introduction': middle.compword.introduction if middle.compword.introduction else '史'
+                    'introduction': middle.compword.introduction if middle.compword.introduction else '中南大学，铁道学院，知行合一，经世致用，前程似锦，灿烂光明，电子商务，问题不大，继续努力',
+                    'comment': comment_model.text if comment_model else '等你来说说TA是什么水平'
                 }
                 count += 1
             print(result)
@@ -112,15 +116,18 @@ def get_compword():
             db.session.add(seedword_model)
             db.session.commit()
 
+            seedword_model = SeedWordModel.query.filter_by(word=seedword).first()
+            comment_model = CommentModel.query.filter_by(seedword_id=seedword_model.id,
+                                                         compword_id=seedword_model.id).order_by(desc(CommentModel.like)).first()
+
             result['seedword'] = {
                 'word': seedword,
                 'image': oss_model_seed.path if oss_model_seed.path else 'https://business-03.oss-cn-hangzhou.aliyuncs.com/images/1b685172-9324-11ee-b9f6-744ca17172e4.png',
                 'chart': oss_model.path if oss_model.path else 'https://business-03.oss-cn-hangzhou.aliyuncs.com/images/1b685172-9324-11ee-b9f6-744ca17172e4.png',
                 'word_cloud': oss_model_wordcloud.path if oss_model_wordcloud.path else 'https://business-03.oss-cn-hangzhou.aliyuncs.com/images/1b685172-9324-11ee-b9f6-744ca17172e4.png',
-                'introduction': seedword_model.introduction if seedword_model.introduction else '史'
+                'introduction': seedword_model.introduction if seedword_model.introduction else '中南大学，铁道学院，知行合一，经世致用，前程似锦，灿烂光明，电子商务，问题不大，继续努力',
+                'comment': comment_model.text if comment_model else '等你来说说TA是什么水平'
             }
-
-            seedword_model = SeedWordModel.query.filter_by(word=seedword).first()
 
             count = 0  # 计数用
             get_num = 10  # 存的竞争性关键词个数
@@ -149,7 +156,7 @@ def get_compword():
                         db.session.add(compword_model)
                         db.session.commit()
 
-                    compword_model = CompWordModel.query.filter_by(word=compkey).first()
+                    compword_model = CompWordModel.query.filter_by(word=compkey).order_by(desc(CommentModel.like)).first()
                     middle_table = SeedwordCompword()
                     middle_table.comp_value = comp
                     middle_table.compword = compword_model
@@ -157,6 +164,8 @@ def get_compword():
                     db.session.commit()
 
                     oss_model_comp = OssModel.query.filter_by(name=compkey + '.jpg').first()
+                    comment_model = CommentModel.query.filter_by(seedword_id=seedword_model.id,
+                                                                 compword_id=compword_model.id).first()
                     if oss_model_comp:
                         path = oss_model_comp.path
                     else:
@@ -166,7 +175,8 @@ def get_compword():
                         'word': compkey,
                         'comp': comp,
                         'image': path,
-                        'introduction': compword_model.introduction if compword_model.introduction else '史'
+                        'introduction': compword_model.introduction if compword_model.introduction else '中南大学，铁道学院，知行合一，经世致用，前程似锦，灿烂光明，电子商务，问题不大，继续努力',
+                        'comment': comment_model.text if comment_model else '等你来说说TA是什么水平'
                     }
 
                     for agencyword in agency_list:
