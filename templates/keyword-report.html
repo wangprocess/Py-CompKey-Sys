@@ -11,8 +11,8 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-12 text-center">
-                <h2 class="text-white mb-4">How does it work?</h2>
+            <div class="col-12 text-center" >
+                <h2 class="text-white mb-4" id="title"></h2>
             </div>
 
             <div class="col-lg-10 col-12 mx-auto">
@@ -21,42 +21,6 @@
                         <div class="list-progress">
                             <div class="inner"></div>
                         </div>
-
-                        <li>
-                            <h4 class="text-white mb-3">Search your favourite topic</h4>
-
-                            <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis,
-                                cumque magnam? Sequi, cupiditate quibusdam alias illum sed esse ad dignissimos libero
-                                sunt, quisquam numquam aliquam? Voluptas, accusamus omnis?</p>
-
-                            <div class="icon-holder">
-                                <i class="bi-search"></i>
-                            </div>
-                        </li>
-
-                        <li>
-                            <h4 class="text-white mb-3">Bookmark &amp; Keep it for yourself</h4>
-
-                            <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint animi
-                                necessitatibus aperiam repudiandae nam omnis est vel quo, nihil repellat quia velit
-                                error modi earum similique odit labore. Doloremque, repudiandae?</p>
-
-                            <div class="icon-holder">
-                                <i class="bi-bookmark"></i>
-                            </div>
-                        </li>
-
-                        <li>
-                            <h4 class="text-white mb-3">Read &amp; Enjoy</h4>
-
-                            <p class="text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi vero
-                                quisquam, rem assumenda similique voluptas distinctio, iste est hic eveniet debitis ut
-                                ducimus beatae id? Quam culpa deleniti officiis autem?</p>
-
-                            <div class="icon-holder">
-                                <i class="bi-book"></i>
-                            </div>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -76,7 +40,50 @@
 <!-- TODO:载入或写入js -->
 <script src="../static/js/jquery.min.js"></script>
 <script src="../static/js/bootstrap.bundle.min.js"></script>
+<script src="../static/js/marked.min.js"></script>
 <script src="../static/js/jquery.sticky.js"></script>
 <!-- <script src="../static/js/click-scroll.js"></script> -->
 <script src="../static/js/custom.js"></script>
+
+<script>
+    $(function(){
+        $.ajax({
+            type:"POST",
+            url:"/gpt/twoWord",
+            dataType:"JSON",
+            data: {
+                brand1: '小米',
+                brand2: '华为'
+            },
+            success:function(res){
+               show(res)
+            }
+        })
+
+        function show(data) {
+            document.getElementById('title').innerText = data.title;
+            let iconClasses = [
+                'bi-search', 'bi-heart', 'bi-star', 'bi-lightbulb', 'bi-gift', 'bi-music-note', 'bi-tv', 'bi-camera-reels',
+                'bi-compass', 'bi-cup', 'bi-headphones', 'bi-telephone', 'bi-briefcase', 'bi-credit-card', 'bi-trophy',
+                'bi-bicycle', 'bi-umbrella', 'bi-basket', 'bi-book', 'bi-cloud'
+            ];
+            for (let i=1; i < data.block_num+1; i++){
+                console.log(data['block' + i])
+                let BlockItem=
+                    '<li class="active">' +
+                    '    <h4 class="text-white mb-3">' + data['block' + i].title + '</h4>' +
+                    '    <p class="text-white">' + data['block' + i].text + '</p>' +
+                    '    <div class="icon-holder">' +
+                    '        <i class=" ' + iconClasses[i] +'"></i>' +
+                    '    </div>' +
+                    '</li>';
+                $('#vertical-scrollable-timeline').append(BlockItem);
+            }
+
+        }
+    })
+
+</script>
+
+
 {% endblock %}

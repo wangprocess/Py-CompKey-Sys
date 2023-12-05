@@ -4,7 +4,8 @@ from flask import request
 from algorithm import compkey_alg, plot, get_agencywords, plot_cloud
 from extensions import db
 from utils import success_api, fail_api, data_api, OSSUtil, generate_image, generate_word_analysis_report
-from flask import render_template
+from flask import render_template, jsonify
+from sqlalchemy import desc
 
 
 def is_seedword_searched(seedword):
@@ -27,13 +28,9 @@ def is_agencyword_existed(agencyword):
 
 @compkey_blue.route('/lists', methods=['GET'])
 def get_compword():
-    print("你好")
     if request.method == 'GET':
-        seedword = request.args.get('seedword',type=str)
+        seedword = request.args.get('seedword', type=str)
         # seedword = request.form.get('seedword')
-        print("seedword如下:")
-        print(seedword)
-        print("结束")
         result = {'seedword': {'word': seedword}}
         if is_seedword_searched(seedword):
             seedword_model = SeedWordModel.query.filter_by(word=seedword).first()
@@ -190,3 +187,21 @@ def get_compword():
                 message='成功获取',
                 result=result
             )
+@compkey_blue.route('/getHotwords', methods=['GET'])
+def get_Hotwords():
+    # 查询 num 字段数值排名前五的记录
+    top_five_seedwords = SeedWordModel.query.order_by(desc(SeedWordModel.num)).limit(5).all()
+    # 将查询结果转为字典列表
+    seedwords_data = []
+    for seedword_model in top_five_seedwords:
+        if seedword_model is not None:
+            seedword_data = {
+                "word": seedword_model.word,
+                "num": seedword_model.num
+            }
+            seedwords_data.append(seedword_data)
+        else:
+            print("No matching record found.")
+
+    # 使用jsonify将字典列表转为JSON格式
+    return jsonify({"seedwords": seedwords_data})
