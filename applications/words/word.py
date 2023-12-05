@@ -57,7 +57,7 @@ def get_compword():
                     'image': oss_model_image.path if oss_model_image else None
                 }
                 count += 1
-
+            print(result)
             return render_template('topic-listing.html', result=result)
 
         else:

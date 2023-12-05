@@ -1044,6 +1044,19 @@ blockquote {
   background-image: linear-gradient(to right, rgba(255,248,232), transparent);
 }
 
+.score-bar {
+  display: block;
+  text-align: right;
+}
+
+.score-num {
+  color: rgb(0, 164, 184);
+}
+
+.score-people {
+  font-size: 12px;
+}
+
 /*---------------------------------------
   RESPONSIVE STYLES               
 -----------------------------------------*/
