@@ -54,7 +54,7 @@ def get_compword():
                 result['compword' + str(count)] = {
                     'word': middle.compword.word,
                     'comp': middle.comp_value,
-                    'image': oss_model_image.path if oss_model_image else None,
+                    'image': oss_model_image.path if oss_model_image else 'https://business-03.oss-cn-hangzhou.aliyuncs.com/images/1b685172-9324-11ee-b9f6-744ca17172e4.png',
                     'introduction': middle.compword.introduction if middle.compword.introduction else '史'
                 }
                 count += 1
