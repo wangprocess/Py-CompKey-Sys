@@ -31,7 +31,7 @@ def generate_competitive_analysis_report():
             file.write(record)
 
     _oss_util = OSSUtil()
-    md_path = _oss_util.put_object('static/images/' + brand1 + '_' + brand2 + '_report.md')
+    md_path = _oss_util.put_md('static/images/' + brand1 + '_' + brand2 + '_report.md')
     result = {'md_path': md_path}
 
     message = info.split('\n')

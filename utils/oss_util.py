@@ -33,6 +33,19 @@ class OSSUtil:
         self._bucket.put_object_from_file("images/" + image_name, image_path)
         return "https://business-03.oss-cn-hangzhou.aliyuncs.com/images/" + image_name
 
+    def put_md(self, md_path):
+        """
+        Description:   上传图片
+        :param:
+            filepath:   本地文件位置
+        :return:       文件公网访问url
+        """
+        # self._bucket.put_object_from_file('images/test.png', '../static/images/rf_result.png')
+        # https://defect-predict.oss-cn-hangzhou.aliyuncs.com/ + postfix即可公网访问
+        md_name = str(get_uuid()) + ".md"
+        self._bucket.put_object_from_file("md/" + md_name, md_path)
+        return "https://business-03.oss-cn-hangzhou.aliyuncs.com/md/" + md_name
+
 if __name__ == '__main__':
     # for i in range(5):
     #     print(get_uuid())
