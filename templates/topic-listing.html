@@ -50,7 +50,7 @@
                                 <!-- 填入描述性文字 -->
                                 <p class="mb-0">{{result.seedword.introduction}}</p>
                                 <div class="score-bar">
-                                    <h3 class="score-num mb-0">5.0</h3>
+                                    <h3 class="score-num mb-0">{{ result.seedword.grade }}</h3>
                                     <p class="score-people mb-1">1人评分</p>
                                 </div>
                                 <div class="comment-bar">
@@ -97,7 +97,7 @@
                                     {{result[compWord].introduction}}
                                 </p>
                                 <div class="score-bar">
-                                    <h3 class="score-num mb-0">5.0</h3>
+                                    <h3 class="score-num mb-0">{{ result[compWord].grade }}</h3>
                                     <p class="score-people mb-1">1人评分</p>
                                 </div>
                                 <div class="comment-bar">
