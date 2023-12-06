@@ -19,6 +19,11 @@ def add_comment():
     compword = request.form['compword']
     compword_id = CompWordModel.query.filter_by(word=compword).first().id
     score = request.form['score']
+    print(userid)
+    print(text)
+    print(seedword)
+    print(compword)
+    print(score)
 
     comment_model = CommentModel()
     comment_model.user_id = userid
@@ -32,14 +37,14 @@ def add_comment():
 
     if compword_id:
         comment_models = CommentModel.query.filter_by(seedword_id=seedword_id, compword_id=compword_id).all()
-        average_score = sum(comment_model['score'] for comment_model in comment_models) / len(comment_models)
+        average_score = sum(comment_model.score for comment_model in comment_models) / len(comment_models)
         middle = SeedwordCompword.query.filter_by(seedword_id=seedword_id, compword_id=compword_id).first()
         middle.grade = average_score
         db.session.commit()
 
     else:
         comment_models = CommentModel.query.filter_by(seedword_id=seedword_id, compword_id=compword_id).all()
-        average_score = sum(comment_model['score'] for comment_model in comment_models) / len(comment_models)
+        average_score = sum(comment_model.score for comment_model in comment_models) / len(comment_models)
         seedword_model = SeedWordModel.query.filter_by(word=seedword).first()
         seedword_model.grade = average_score
         db.session.commit()

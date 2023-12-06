@@ -263,19 +263,23 @@
 
         $(".subscribe-form button").click(function (e) {
             e.preventDefault()
-            let starId = $("#star-container-add i.bi-star-fill").length;
+            let starId = $("#star-container-add i.bi-star-fill").length * 2;
             let comment = $("#subscribe-comment").val();
             console.log(starId);
             console.log(comment, starId);
 
+            console.log("{{seedword}}");
+            console.log("{{thisword}}");
+            console.log("{{session['user_id']}}");
             
             $("#comment-container").prepend(renderComment(comment,starId));
 
             $.ajax({
                 type: "POST",
                 url: "/comment/addComment",
+                dataType:"json",
                 data: {
-                    username: "{{session['user_id']}}",
+                    userid: "{{session['user_id']}}",
                     score: starId,
                     text: comment,
                     seedword: "{{seedword}}",
