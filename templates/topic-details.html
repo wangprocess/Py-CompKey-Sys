@@ -12,8 +12,7 @@
             <div class="col-lg-5 col-12">
                 <div class="topics-detail-block bg-white shadow-lg">
                     <!-- 这里用传入的img -->
-                    <img src="../static/images/topics/undraw_Remote_design_team_re_urdx.png"
-                        class="topics-detail-block-image img-fluid">
+                    <img src="{{thislink}}" class="topics-detail-block-image img-fluid">
                 </div>
             </div>
 
@@ -23,11 +22,12 @@
                         <!-- 评分页面 -->
                         <li class="breadcrumb-item"><a href="#">评分</a></li>
 
-                        <li class="breadcrumb-item active" aria-current="page">苹果</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{thisword}}</li>
                     </ol>
                 </nav>
                 <!--  -->
-                <h2 class="text-white">苹果</h2>
+                <h2 class="text-white">{{thisword}}</h2>
+                <h6 class="text-white">{{introduction}}</h6>
 
                 <div class="d-flex align-items-center mt-5">
                     <a href="#topics-detail" class="btn custom-btn custom-border-btn smoothscroll me-4">看看大家的评分</a>
@@ -45,7 +45,7 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-lg-8 col-12 m-auto">
+            <div class="col-lg-8 col-12 m-auto" id="comment-container">
                 <!-- <h3 class="mb-4">Introduction to Web Design</h3>
 
                 <p>So how can you stand out, do something unique and interesting, build an online business, and get paid
@@ -86,9 +86,93 @@
                         <div class="col-md-10 comment-part">
                             <!-- 这里放星星 -->
                             <div class="mb-1" id="star-container">
+                                <i class="bi bi-star-fill star-clicked"></i>
+                                <i class="bi bi-star-fill star-clicked"></i>
+                                <i class="bi bi-star-fill star-clicked"></i>
+                                <i class="bi bi-star"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                            <!-- 这里放评论 -->
+                            <h4>评论：</h4>
+                            <p class="mb-0">非常好的词语，使我的屏幕不停地旋转</p>
+                            <div style="display: block;text-align: right;">
+                                <i class="bi bi-heart" id="like-btn"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <figure>
+                                <!-- 默认头像 -->
+                                <img src="../static/images/img-16812086553637fc5cc8435c6ae830761f9fad31e9029.jpg"
+                                    style="width: 38px;height: 38px;border-radius: 5px;">
+                            </figure>
+                            <h5 style="font-size: 1.25rem;">用户</h5>
+                        </div>
+                        <div class="col-md-10 comment-part">
+                            <!-- 这里放星星 -->
+                            <div class="mb-1" id="star-container">
+                                <i class="bi bi-star-fill star-clicked"></i>
+                                <i class="bi bi-star-fill star-clicked"></i>
+                                <i class="bi bi-star-fill star-clicked"></i>
+                                <i class="bi bi-star"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                            <!-- 这里放评论 -->
+                            <h4>评论：</h4>
+                            <p class="mb-0">非常好的词语，使我的屏幕不停地旋转</p>
+                            <div style="display: block;text-align: right;">
+                                <i class="bi bi-heart" id="like-btn"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <figure>
+                                <!-- 默认头像 -->
+                                <img src="../static/images/img-16812086553637fc5cc8435c6ae830761f9fad31e9029.jpg"
+                                    style="width: 38px;height: 38px;border-radius: 5px;">
+                            </figure>
+                            <h5 style="font-size: 1.25rem;">用户</h5>
+                        </div>
+                        <div class="col-md-10 comment-part">
+                            <!-- 这里放星星 -->
+                            <div class="mb-1" id="star-container">
+                                <i class="bi bi-star-fill star-clicked"></i>
+                                <i class="bi bi-star-fill star-clicked"></i>
                                 <i class="bi bi-star"></i>
                                 <i class="bi bi-star"></i>
                                 <i class="bi bi-star"></i>
+                            </div>
+                            <!-- 这里放评论 -->
+                            <h4>评论：</h4>
+                            <p class="mb-0">非常不好的词语，使我的屏幕疯狂地旋转</p>
+                            <div style="display: block;text-align: right;">
+                                <i class="bi bi-heart" id="like-btn"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <figure>
+                                <!-- 默认头像 -->
+                                <img src="../static/images/img-16812086553637fc5cc8435c6ae830761f9fad31e9029.jpg"
+                                    style="width: 38px;height: 38px;border-radius: 5px;">
+                            </figure>
+                            <h5 style="font-size: 1.25rem;">用户</h5>
+                        </div>
+                        <div class="col-md-10 comment-part">
+                            <!-- 这里放星星 -->
+                            <div class="mb-1" id="star-container">
+                                <i class="bi bi-star-fill star-clicked"></i>
+                                <i class="bi bi-star-fill star-clicked"></i>
+                                <i class="bi bi-star-fill star-clicked"></i>
                                 <i class="bi bi-star"></i>
                                 <i class="bi bi-star"></i>
                             </div>
@@ -116,20 +200,28 @@
     <div class="container">
         <div class="row justify-content-center">
 
-            <div class="col-lg-5 col-12">
+            <!-- <div class="col-lg-5 col-12">
                 <img src="../static/images/rear-view-young-college-student.jpg" class="newsletter-image img-fluid"
                     alt="">
-            </div>
+            </div> -->
 
             <div class="col-lg-5 col-12 subscribe-form-wrap d-flex justify-content-center align-items-center">
                 <form class="custom-form subscribe-form" action="#" method="post" role="form">
-                    <h4 class="mb-4 pb-2">Get Newsletter</h4>
+                    <h4 class="mb-4 pb-2">创建评分</h4>
 
-                    <input type="email" name="subscribe-email" id="subscribe-email" pattern="[^ @]*@[^ @]*"
-                        class="form-control" placeholder="Email Address" required="">
+                    <div class="mb-1" id="star-container-add">
+                        <i class="bi bi-star" id="star-1"></i>
+                        <i class="bi bi-star" id="star-2"></i>
+                        <i class="bi bi-star" id="star-3"></i>
+                        <i class="bi bi-star" id="star-4"></i>
+                        <i class="bi bi-star" id="star-5"></i>
+                    </div>
+
+                    <input type="email" name="subscribe-email" id="subscribe-comment" class="form-control"
+                        placeholder="输入你的评论" required="">
 
                     <div class="col-lg-12 col-12">
-                        <button type="submit" class="form-control">Subscribe</button>
+                        <button type="submit" class="form-control">发布</button>
                     </div>
                 </form>
             </div>
@@ -157,15 +249,82 @@
         //     $(this).removeClass("bi-heart-fill").addClass("bi-heart");
         // })
 
-        $('#like-btn').on('click',function(){
+        $('#like-btn').on('click', function () {
             $(this).removeClass('bi-heart').addClass('bi-heart-fill').toggleClass('like-clicked')
         })
 
-        $('#star-container i').click(function () {
+        // $('#star-container i').click(function () {
+        //     $(this).removeClass('bi-star').addClass('bi-star-fill').addClass('star-clicked').prevAll().removeClass('bi-star').addClass('bi-star-fill').addClass('star-clicked')
+        // })
+
+        $('#star-container-add i').click(function () {
             $(this).removeClass('bi-star').addClass('bi-star-fill').addClass('star-clicked').prevAll().removeClass('bi-star').addClass('bi-star-fill').addClass('star-clicked')
         })
-    })
+
+        $(".subscribe-form button").click(function (e) {
+            e.preventDefault()
+            let starId = $("#star-container-add i.bi-star-fill").length;
+            let comment = $("#subscribe-comment").val();
+            console.log(starId);
+            console.log(comment, starId);
+
+            
+            $("#comment-container").prepend(renderComment(comment,starId));
+
+            $.ajax({
+                type: "POST",
+                url: "",
+                data: {
+                    username: "{{session['user_id']}}",
+                    score: starId,
+                    text: comment,
+                    seedword: "{{seedword}}",
+                    compword: "{{thisword}}"
+                },
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (e) {
+                    console.error(e);
+                }
+            })
+
+        })
+
+        function renderComment(comment, starId) {
+            return '<div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">' +
+                '<div class="row">' +
+                '<div class="col-md-2">' +
+                '<figure>' +
+                '<img src="../static/images/img-16812086553637fc5cc8435c6ae830761f9fad31e9029.jpg" style="width: 38px;height: 38px;border-radius: 5px;">' +
+                '</figure>' +
+                '<h5 style="font-size: 1.25rem;">用户</h5>' +
+                '</div>' +
+                '<div class="col-md-10 comment-part">' +
+                '<div class="mb-1" id="star-container">' +
+                renderStarsHtml(starId) +
+                '</div>' +
+                '<h4>评论：</h4>' +
+                '<p class="mb-0" id="real-comment">' + comment + '</p>' +
+                '<div style="display: block;text-align: right;">' +
+                '<i class="bi bi-heart" id="like-btn"></i>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>';
+        }
+
+        // 渲染星星的 HTML 代码
+        function renderStarsHtml(starId) {
+            var starsHtml = '';
+            for (var i = 1; i <= 5; i++) {
+                var starClass = (i <= starId) ? 'bi-star-fill star-clicked' : 'bi-star';
+                starsHtml += '<i class="' + starClass + '" id="star-' + i + '"></i>';
+            }
+            return starsHtml;
+        }
+        // starContainer.on('mouseleave', function () {
+        //     stars.removeClass('bi-star-fill').addClass('bi-star');
+    });
 </script>
-{% endblock %}starContainer.on('mouseleave', function () {
-stars.removeClass('bi-star-fill').addClass('bi-star');
-});
+{% endblock %}
