@@ -118,7 +118,7 @@
 
             <div class="col-lg-5 col-12 mb-4 mb-lg-0">
                 <iframe class="google-map"
-                    src="https://map.baidu.com/search/%E4%B8%AD%E5%8D%97%E5%A4%A7%E5%AD%A6(%E9%93%81%E9%81%93%E6%A0%A1%E5%8C%BA)/@12578766.973443322,3246831.91234645,17.83z?querytype=s&da_src=shareurl&wd=%E4%B8%AD%E5%8D%97%E5%A4%A7%E5%AD%A6(%E9%93%81%E9%81%93%E6%A0%A1%E5%8C%BA)&c=1&src=0&wd2=%E9%95%BF%E6%B2%99%E5%B8%82%E5%A4%A9%E5%BF%83%E5%8C%BA&pn=0&sug=1&l=13&b=(12553276,3237152;12607644,3267616)&from=webmap&biz_forward=%7B%22scaler%22:2,%22styles%22:%22pl%22%7D&sug_forward=7763d4807dd6180ccc06a419&device_ratio=2"
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3322.714059252819!2d112.9882299226586!3d28.138574804272935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDA4JzI0LjYiTiAxMTLCsDU5JzIzLjIiRQ!5e0!3m2!1szh-CN!2shk!4v1701827799595!5m2!1szh-CN!2shk"
                     width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -186,6 +186,12 @@
 
 <script>
     $(document).ready(function () {
+        $(window).on('load', function() {
+            // You can set focus to a different element based on your page structure
+            // For example, setting focus to the body element
+            console.log("已经准备就绪，调整焦点")
+            $('#keyword').focus();
+        });
         $('#search-btn').on('click', (e) => {
             e.preventDefault();
             let keyword = $('#keyword').val()
