@@ -20,7 +20,10 @@ def index_page():
 
 @index_bp.route('/details')
 def detail_page():
-    return render_template('topic-details.html')
+    commentword = request.args.get('commentword')
+    piclink = request.args.get('piclink')
+    introduction = request.args.get('introduction')
+    return render_template('topic-details.html', thisword=commentword, thislink=piclink, introduction=introduction)
 
 
 # @index_bp.route('/lists')
