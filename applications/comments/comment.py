@@ -19,11 +19,6 @@ def add_comment():
     compword = request.form['compword']
     compword_id = CompWordModel.query.filter_by(word=compword).first().id
     score = request.form['score']
-    print(userid)
-    print(text)
-    print(seedword)
-    print(compword)
-    print(score)
 
     comment_model = CommentModel()
     comment_model.user_id = userid

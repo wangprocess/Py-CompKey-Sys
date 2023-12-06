@@ -263,7 +263,7 @@
 
         $(".subscribe-form button").click(function (e) {
             e.preventDefault()
-            let starId = $("#star-container-add i.bi-star-fill").length * 2;
+            let starId = $("#star-container-add i.bi-star-fill").length;
             let comment = $("#subscribe-comment").val();
             console.log(starId);
             console.log(comment, starId);
@@ -280,7 +280,7 @@
                 dataType:"json",
                 data: {
                     userid: "{{session['user_id']}}",
-                    score: starId,
+                    score: starId*2,
                     text: comment,
                     seedword: "{{seedword}}",
                     compword: "{{thisword}}"
