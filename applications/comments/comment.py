@@ -1,5 +1,5 @@
 from applications.comments import comment_blue
-from models import CommentModel, SeedWordModel, CompWordModel, UserModel
+from models import CommentModel, SeedWordModel, CompWordModel, UserModel, SeedwordCompword
 from flask import Flask, request, session, redirect, render_template
 from extensions import db
 from utils import success_api, fail_api, data_api
@@ -31,7 +31,11 @@ def add_comment():
     db.session.commit()
 
     if compword_id:
-
+        comment_models = CommentModel.query.filter_by(seedword_id=seedword_id, compword_id=compword_id).all()
+        average_score = sum(comment_model['score'] for comment_model in comment_models) / len(comment_models)
+        middle = SeedwordCompword.query.filter_by(seedword_id=seedword_id, compword_id=compword_id).first()
+        middle.grade = average_score
+        db.session.commit()
 
     else:
         comment_models = CommentModel.query.filter_by(seedword_id=seedword_id, compword_id=compword_id).all()
@@ -39,6 +43,5 @@ def add_comment():
         seedword_model = SeedWordModel.query.filter_by(word=seedword).first()
         seedword_model.grade = average_score
         db.session.commit()
-
 
     return success_api("新增成功")
