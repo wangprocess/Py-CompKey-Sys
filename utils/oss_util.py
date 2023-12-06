@@ -51,4 +51,4 @@ if __name__ == '__main__':
     #     print(get_uuid())
 
     _oss_util = OSSUtil()
-    print(_oss_util.put_object("G:\CourseProject\Py-Compkey-Sys\static\images\原神启动.jpg"))
+    print(_oss_util.put_object("F:\大三上课内学习\电子商务应用\py-comp-key-sys\static\images\原神启动.jpg"))
