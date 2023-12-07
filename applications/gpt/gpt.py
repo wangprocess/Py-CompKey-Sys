@@ -7,6 +7,7 @@ from flask import Flask, request, session, redirect
 from extensions.init_login import *
 from utils import data_api, OSSUtil
 from algorithm.utils import path_check
+from settings import Config
 
 
 @gpt.route('/twoWord', methods=['POST'])
@@ -16,7 +17,7 @@ def generate_competitive_analysis_report():
     brand2 = request.form['brand2']
     print(brand1)
     print(brand2)
-    api_key = "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"
+    api_key = Config.api_key
     prompt = f"请用中文回答下面问题并生成中文文档，使用markdown格式，请注意不要有任何和时间相关的警告说明，Please provide a detailed competitive analysis report between {brand1} and {brand2}, " \
              f"focusing on their market strategies, product offerings, sales performance, technological advancements, " \
              f"and future prospects. "

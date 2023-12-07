@@ -5,11 +5,11 @@ from tenacity import retry, stop_after_attempt, wait_random_exponential, wait_fi
 from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin, current_user
 from flask import Flask, request, session, redirect
 from extensions.init_login import *
-app = Flask(__name__)
+from settings import Config
 
 
 def generate_image(imageGen, related_word):
-    api_key = "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"
+    api_key = Config.api_key
 
     words = ""
     for word in related_word:
@@ -27,7 +27,7 @@ def generate_image(imageGen, related_word):
 
 
 def generate_word_analysis_report(brand1, related_word):
-    api_key = "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"
+    api_key = Config.api_key
 
     words = ""
     for word in related_word:
