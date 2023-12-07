@@ -9,11 +9,11 @@ class Config(object):
     LOG_LEVEL = "INFO"
 
     # mysql 配置
-    MYSQL_USERNAME = ""
-    MYSQL_PASSWORD = ""
-    MYSQL_HOST = ""
-    MYSQL_PORT = 3306
-    MYSQL_DATABASE = ""
+    MYSQL_USERNAME = "compkey"
+    MYSQL_PASSWORD = "123456"
+    MYSQL_HOST = "47.120.5.170"
+    MYSQL_PORT = 57377
+    MYSQL_DATABASE = "compkey"
 
     # 数据库连接格式
     SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{MYSQL_USERNAME}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DATABASE}"
@@ -28,5 +28,5 @@ class Config(object):
     # 控制在连接池达到最大值后可以创建的连接数。当这些额外的 连接回收到连接池后将会被断开和抛弃。
     SQLALCHEMY_MAX_OVERFLOW = 2
 
-    api_key = ""
+    api_key = "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"
     # GPT的api_key,填写后可以使用GPT的接口，模型不同要在applications的gpt的gpt.py和utils文件夹下的gpt_utils.py更改模型，也就是openai的ChatCompletion.create的model
