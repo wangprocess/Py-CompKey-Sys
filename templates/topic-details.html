@@ -22,14 +22,22 @@
                         <!-- 评分页面 -->
                         <li class="breadcrumb-item"><a href="#">评分</a></li>
 
-                        <li class="breadcrumb-item active" aria-current="page">{{thisword}}</li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                        {% if thisword %}
+                            {{ thisword }}
+                        {% else %}
+                            {{ seedword }}
+                        {% endif %}
+                        </li>
                     </ol>
                 </nav>
                 <!--  -->
                 <h2 class="text-white">{{thisword}}</h2>
                 <h6 class="text-white">{{introduction}}</h6>
 
-                <div class="d-flex align-items-center mt-5">
+                <h3 class="score-num mb-0" style="color: rgb(184 163 0);margin-top: 20px;margin-left: 50px">{{ grade }}</h3>
+
+                <div class="d-flex align-items-center mt-5" style="margin-top: 1rem!important;">
                     <a href="#topics-detail" class="btn custom-btn custom-border-btn smoothscroll me-4">看看大家的评分</a>
 
                     <a href="#top" class="custom-icon bi-bookmark smoothscroll"></a>
@@ -73,118 +81,6 @@
 
                 <p>Most people start with freelancing skills they already have as a side hustle to build up income. This
                     extra cash can be used for a vacation, to boost up savings, investing, build business.</p> -->
-                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <figure>
-                                <!-- 默认头像 -->
-                                <img src="../static/images/img-16812086553637fc5cc8435c6ae830761f9fad31e9029.jpg"
-                                    style="width: 38px;height: 38px;border-radius: 5px;">
-                            </figure>
-                            <h5 style="font-size: 1.25rem;">用户</h5>
-                        </div>
-                        <div class="col-md-10 comment-part">
-                            <!-- 这里放星星 -->
-                            <div class="mb-1" id="star-container">
-                                <i class="bi bi-star-fill star-clicked"></i>
-                                <i class="bi bi-star-fill star-clicked"></i>
-                                <i class="bi bi-star-fill star-clicked"></i>
-                                <i class="bi bi-star"></i>
-                                <i class="bi bi-star"></i>
-                            </div>
-                            <!-- 这里放评论 -->
-                            <h4>评论：</h4>
-                            <p class="mb-0">非常好的词语，使我的屏幕不停地旋转</p>
-                            <div style="display: block;text-align: right;">
-                                <i class="bi bi-heart" id="like-btn"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <figure>
-                                <!-- 默认头像 -->
-                                <img src="../static/images/img-16812086553637fc5cc8435c6ae830761f9fad31e9029.jpg"
-                                    style="width: 38px;height: 38px;border-radius: 5px;">
-                            </figure>
-                            <h5 style="font-size: 1.25rem;">用户</h5>
-                        </div>
-                        <div class="col-md-10 comment-part">
-                            <!-- 这里放星星 -->
-                            <div class="mb-1" id="star-container">
-                                <i class="bi bi-star-fill star-clicked"></i>
-                                <i class="bi bi-star-fill star-clicked"></i>
-                                <i class="bi bi-star-fill star-clicked"></i>
-                                <i class="bi bi-star"></i>
-                                <i class="bi bi-star"></i>
-                            </div>
-                            <!-- 这里放评论 -->
-                            <h4>评论：</h4>
-                            <p class="mb-0">非常好的词语，使我的屏幕不停地旋转</p>
-                            <div style="display: block;text-align: right;">
-                                <i class="bi bi-heart" id="like-btn"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <figure>
-                                <!-- 默认头像 -->
-                                <img src="../static/images/img-16812086553637fc5cc8435c6ae830761f9fad31e9029.jpg"
-                                    style="width: 38px;height: 38px;border-radius: 5px;">
-                            </figure>
-                            <h5 style="font-size: 1.25rem;">用户</h5>
-                        </div>
-                        <div class="col-md-10 comment-part">
-                            <!-- 这里放星星 -->
-                            <div class="mb-1" id="star-container">
-                                <i class="bi bi-star-fill star-clicked"></i>
-                                <i class="bi bi-star-fill star-clicked"></i>
-                                <i class="bi bi-star"></i>
-                                <i class="bi bi-star"></i>
-                                <i class="bi bi-star"></i>
-                            </div>
-                            <!-- 这里放评论 -->
-                            <h4>评论：</h4>
-                            <p class="mb-0">非常不好的词语，使我的屏幕疯狂地旋转</p>
-                            <div style="display: block;text-align: right;">
-                                <i class="bi bi-heart" id="like-btn"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">
-                    <div class="row">
-                        <div class="col-md-2">
-                            <figure>
-                                <!-- 默认头像 -->
-                                <img src="../static/images/img-16812086553637fc5cc8435c6ae830761f9fad31e9029.jpg"
-                                    style="width: 38px;height: 38px;border-radius: 5px;">
-                            </figure>
-                            <h5 style="font-size: 1.25rem;">用户</h5>
-                        </div>
-                        <div class="col-md-10 comment-part">
-                            <!-- 这里放星星 -->
-                            <div class="mb-1" id="star-container">
-                                <i class="bi bi-star-fill star-clicked"></i>
-                                <i class="bi bi-star-fill star-clicked"></i>
-                                <i class="bi bi-star-fill star-clicked"></i>
-                                <i class="bi bi-star"></i>
-                                <i class="bi bi-star"></i>
-                            </div>
-                            <!-- 这里放评论 -->
-                            <h4>评论：</h4>
-                            <p class="mb-0">非常好的词语，使我的屏幕不停地旋转</p>
-                            <div style="display: block;text-align: right;">
-                                <i class="bi bi-heart" id="like-btn"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- <div class="col-lg-4">
@@ -218,10 +114,13 @@
                     </div>
 
                     <input type="email" name="subscribe-email" id="subscribe-comment" class="form-control"
-                        placeholder="输入你的评论" required="">
+                        placeholder="输入你的评论" required="" style="margin-top: 20px">
 
                     <div class="col-lg-12 col-12">
-                        <button type="submit" class="form-control">发布</button>
+                        <button type="submit" class="form-control" style="margin-bottom: 30px">发布</button>
+                    </div>
+                    <div class="col-lg-12 col-12">
+                        <a href="/compkey/lists?seedword={{ seedword }}" class="btn custom-btn custom-border-btn smoothscroll me-4" style="width: 100%">返回</a>
                     </div>
                 </form>
             </div>
@@ -240,6 +139,38 @@
 <script src="../static/js/custom.js"></script>
 <script>
     $(document).ready(function () {
+        $.ajax({
+            type: 'GET',
+            url: "/comment/getComment",
+            data: 'seedword={{ seedword }}&compword={{ thisword }}',
+            dataType: 'json',
+            success: function (res){
+                console.log(res)
+                show_comment(res)
+            },
+            error: function (){
+
+            }
+        })
+
+        function show_comment(data){
+            if (data.result.num===0){
+                $("#comment-container").prepend(renderNoneComment())
+            }
+            for (let i=data.result.num; i > 0; i--){
+                let getComment = 'comment' + i;
+                let comment = data.result[getComment];
+                let comment_id = comment.id
+                let text = comment.text;
+                let score = comment.score/2;
+                let like = comment.like;
+                let username = comment.username;
+                let avatar = comment.avatar;
+                let like_or_not = comment.like_or_not;
+                $("#comment-container").prepend(renderComment(text, score, like, username, avatar, comment_id, like_or_not));
+            }
+        }
+
         // $('#like-btn').on('mouseenter', function () {
         //     $(this).removeClass('bi-heart').addClass('bi-heart-fill')
         // })
@@ -248,10 +179,6 @@
         //     // 切换类为 bi-heart
         //     $(this).removeClass("bi-heart-fill").addClass("bi-heart");
         // })
-
-        $('#like-btn').on('click', function () {
-            $(this).removeClass('bi-heart').addClass('bi-heart-fill').toggleClass('like-clicked')
-        })
 
         // $('#star-container i').click(function () {
         //     $(this).removeClass('bi-star').addClass('bi-star-fill').addClass('star-clicked').prevAll().removeClass('bi-star').addClass('bi-star-fill').addClass('star-clicked')
@@ -262,60 +189,144 @@
         })
 
         $(".subscribe-form button").click(function (e) {
-            e.preventDefault()
-            let starId = $("#star-container-add i.bi-star-fill").length * 2;
-            let comment = $("#subscribe-comment").val();
-            console.log(starId);
-            console.log(comment, starId);
+            if ("{{session['user_id']}}"){
+                e.preventDefault()
+                let starId = $("#star-container-add i.bi-star-fill").length * 2;
+                let comment = $("#subscribe-comment").val();
 
-            console.log("{{seedword}}");
-            console.log("{{thisword}}");
-            console.log("{{session['user_id']}}");
-            
-            $("#comment-container").prepend(renderComment(comment,starId));
+                $.ajax({
+                    type: "POST",
+                    url: "/comment/addComment",
+                    dataType:"json",
+                    data: {
+                        userid: "{{session['user_id']}}",
+                        score: starId,
+                        text: comment,
+                        seedword: "{{seedword}}",
+                        compword: "{{thisword}}"
+                    },
+                    success: function (data) {
+                        location.reload()
+                    },
+                    error: function (e) {
+                        console.error(e);
+                    }
+                })
+            }
+            else {
+                alert("请先登录后再添加评论。")
+            }
 
-            $.ajax({
-                type: "POST",
-                url: "/comment/addComment",
-                dataType:"json",
-                data: {
-                    userid: "{{session['user_id']}}",
-                    score: starId,
-                    text: comment,
-                    seedword: "{{seedword}}",
-                    compword: "{{thisword}}"
-                },
-                success: function (data) {
-                    console.log(data);
-                },
-                error: function (e) {
-                    console.error(e);
-                }
-            })
 
         })
 
-        function renderComment(comment, starId) {
+        function renderComment(comment, starId, like, username, avatar, comment_id, like_or_not) {
+            let like_i = like_or_not ? 'bi-heart-fill like-clicked' : 'bi-heart';
+            let like_p = like_or_not ? 'like_num_clicked' : '';
+            {#根据用户是否点赞动态渲染爱心和点赞数#}
+
             return '<div class="custom-block custom-block-topics-listing bg-white shadow-lg mb-5">' +
                 '<div class="row">' +
-                '<div class="col-md-2">' +
+                '<div class="col-md-2 text-center" style="width: 12%">' +
                 '<figure>' +
-                '<img src="../static/images/img-16812086553637fc5cc8435c6ae830761f9fad31e9029.jpg" style="width: 38px;height: 38px;border-radius: 5px;">' +
+                '<img src="../static/images/img-16812086553637fc5cc8435c6ae830761f9fad31e9029.jpg" style="width: 38px;height: 38px;border-radius: 5px;margin-left: auto;margin-right: auto;">' +
                 '</figure>' +
-                '<h5 style="font-size: 1.25rem;">用户</h5>' +
+                '<h5 style="font-size: 1.25rem;overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">' + username + '</h5>' +
                 '</div>' +
                 '<div class="col-md-10 comment-part">' +
                 '<div class="mb-1" id="star-container">' +
                 renderStarsHtml(starId) +
                 '</div>' +
                 '<h4>评论：</h4>' +
-                '<p class="mb-0" id="real-comment">' + comment + '</p>' +
-                '<div style="display: block;text-align: right;">' +
-                '<i class="bi bi-heart" id="like-btn"></i>' +
+                '<p class="mb-0" id="real-comment" style="font-family: Montserrat, sans-serif; color: #000000;">' + comment + '</p>' +
+                '<div style="display: flex;text-align: right; justify-content: flex-end">' +
+                '<div style="display: flex" data-comment-id="' + comment_id + '" >' +
+                '<i class="bi ' + like_i + '" id="like-btn" style="margin-top: 5px; margin-right: 5px"></i>' +
+                '<p class="mb-0 comment ' + like_p + '" id="real-comment">(' + like + ')</p>' +
+                '</div>' +
                 '</div>' +
                 '</div>' +
                 '</div>' +
                 '</div>';
+        }
+{#'<div class="custom-block bg-white shadow-lg">' +#}
+{#       '</div>';#}
+
+        $(document).on('click', 'div[data-comment-id]', function (){
+            let comment_id = $(this).data('comment-id')
+            let heartIcon = $(this).find('i');
+            let like_num = $(this).find('p');
+            if ("{{session['user_id']}}"){
+                if (!heartIcon.hasClass('bi-heart-fill')){
+                    $.ajax({
+                        type: "PUT",
+                        url: "/comment/like",
+                        dataType:"json",
+                        data: {
+                            comment_id: comment_id,
+                            user_id: "{{session['user_id']}}"
+                        },
+                        success: function (data) {
+                            let currentLikeCount = parseInt(like_num.text().match(/\d+/)[0]);
+                            like_num.text('(' + (currentLikeCount + 1) + ')');
+                            heartIcon.toggleClass('bi-heart').toggleClass('bi-heart-fill').addClass('like-clicked');
+                            like_num.addClass('like_num_clicked');
+                        },
+                        error: function (e) {
+                            console.error(e);
+                        }
+                    })
+                }
+                else {
+                    $.ajax({
+                        type: "PUT",
+                        url: "/comment/cancel_like",
+                        dataType:"json",
+                        data: {
+                            comment_id: comment_id,
+                            user_id: "{{session['user_id']}}"
+                        },
+                        success: function (data) {
+                            let currentLikeCount = parseInt(like_num.text().match(/\d+/)[0]);
+                            like_num.text('(' + (currentLikeCount - 1) + ')');
+                            heartIcon.toggleClass('bi-heart').toggleClass('bi-heart-fill').toggleClass('like-clicked');
+                            like_num.toggleClass('like_num_clicked');
+                        },
+                        error: function (e) {
+                            console.error(e);
+                        }
+                    })
+                }
+            }
+            else {
+                alert("请先登录后再点赞。")
+            }
+
+        })
+
+        $(document).on('mouseover', 'div[data-comment-id]', function (){
+            let comment_id = $(this).data('comment-id')
+            let heartIcon = $(this).find('i');
+            let like_num = $(this).find('p');
+            heartIcon.addClass('like-clicked');
+            like_num.addClass('like_num_clicked');
+        })
+
+        $(document).on('mouseout', 'div[data-comment-id]', function (){
+            let comment_id = $(this).data('comment-id')
+            let heartIcon = $(this).find('i');
+            let like_num = $(this).find('p');
+            if (!heartIcon.hasClass('bi-heart-fill')){
+                heartIcon.removeClass('like-clicked');
+                like_num.removeClass('like_num_clicked');
+            }
+        })
+
+        function renderNoneComment() {
+            return '<img src="../static/images/topics/undraw_happy_music_g6wc.png" class="custom-block-image img-fluid" style="margin-left: auto;margin-right: auto; width: 50%; height: auto; margin-top: 0">'+
+                    '<div class="d-flex">'+
+                            '<p class="mb-0" style="margin-left: auto;margin-right: auto;">有什么想说的？你来第一个点评！</p>'+
+                    '</div>';
         }
 
         // 渲染星星的 HTML 代码
@@ -329,6 +340,11 @@
         }
         // starContainer.on('mouseleave', function () {
         //     stars.removeClass('bi-star-fill').addClass('bi-star');
+
+        document.getElementById('return-btn').addEventListener('click', function() {
+            window.history.back();
+        });
+
     });
 </script>
 {% endblock %}

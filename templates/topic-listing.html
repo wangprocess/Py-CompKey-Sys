@@ -41,7 +41,7 @@
                     <div class="d-flex">
                         <!-- TODO：需要添加href属性哦 -->
                         <!-- 所以点击图片还跳吧应该 -->
-                        <a href="">
+                        <a href="/details?commentword=&piclink={{result.seedword.image}}&introduction={{result.seedword.introduction}}&seedword={{result.seedword.word}}">
                             <img src="{{ result.seedword.image }}" class="custom-block-image img-fluid" alt="">
                         </a>
                         <div class="custom-block-topics-listing-info d-flex">
@@ -51,7 +51,7 @@
                                 <p class="mb-0">{{result.seedword.introduction}}</p>
                                 <div class="score-bar">
                                     <h3 class="score-num mb-0">{{ result.seedword.grade }}</h3>
-                                    <p class="score-people mb-1">1人评分</p>
+                                    <p class="score-people mb-1">{{ result.seedword.grade_num }}人评分</p>
                                 </div>
                                 <div class="comment-bar">
                                     <p style="font-size: 14px;padding: 2px;color: rgb(252,141,105);">
@@ -99,7 +99,7 @@
                                 </p>
                                 <div class="score-bar">
                                     <h3 class="score-num mb-0">{{ result[compWord].grade }}</h3>
-                                    <p class="score-people mb-1">1人评分</p>
+                                    <p class="score-people mb-1">{{ result[compWord].grade_num }}人评分</p>
                                 </div>
                                 <div class="comment-bar">
                                     <p style="font-size: 14px;padding: 2px;color: rgb(252,141,105);">{{

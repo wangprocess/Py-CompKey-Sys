@@ -15,7 +15,7 @@
         <div class="text">
             <p>致力于为您带来最全面的竞争性商业分析
               <div>
-                <i style="float:right;margin-right: 10px;color: #ffffff">- JustVS</i>
+                <i style="float:right;margin-right: 10px;">- JustVS</i>
               </div>
             </p>
         </div>
@@ -29,6 +29,7 @@
               <input type="text" class="input" name="username" id="username" required autocomplete="off">
               <label for="username">用户名</label>
             </div>
+              <input type="hidden" name="referrer" value="{{ request.referrer }}">
             <div class="input-field">
               <input type="password" class="input" name="password" id="password" required>
               <label for="password">密码</label>

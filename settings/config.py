@@ -8,13 +8,6 @@ class Config(object):
     # LOG_LEVEL = "DEBUG"
     LOG_LEVEL = "INFO"
 
-    # 配置redis
-    # 项目上线以后，这个地址就会被替换成真实IP地址，mysql也是
-    REDIS_HOST = '127.0.0.1'
-    REDIS_PORT = '6379'
-    REDIS_PASSWORD = '123456'
-    REDIS_POLL = 10
-
     # mysql 配置
     MYSQL_USERNAME = "compkey"
     MYSQL_PASSWORD = "123456"
@@ -35,8 +28,3 @@ class Config(object):
     # 控制在连接池达到最大值后可以创建的连接数。当这些额外的 连接回收到连接池后将会被断开和抛弃。
     SQLALCHEMY_MAX_OVERFLOW = 2
 
-    # rabbitmq参数配置
-    RABBITUSER = "user"
-    RABBITPASSWORD = "password"
-    RABBITHOST = "your ip"
-    RABBITPORT = 'your port'

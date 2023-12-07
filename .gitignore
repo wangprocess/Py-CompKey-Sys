@@ -159,3 +159,5 @@ algorithm/image
 .idea/
 vnev/
 migrations/
+
+static/report/

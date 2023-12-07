@@ -1,0 +1,12 @@
+.like_num {
+    font-size: 17px;
+    margin-top: 2px
+}
+
+.like_num:hover {
+  color: red;
+}
+
+.like_num_clicked {
+    color: red;
+}

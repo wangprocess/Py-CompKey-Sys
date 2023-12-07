@@ -6,6 +6,7 @@ from flask_login import LoginManager, login_user, logout_user, login_required, U
 from flask import Flask, request, session, redirect
 from extensions.init_login import *
 from utils import data_api, OSSUtil
+from algorithm.utils import path_check
 
 
 @gpt.route('/twoWord', methods=['POST'])
@@ -31,7 +32,8 @@ def generate_competitive_analysis_report():
             file.write(record)
 
     _oss_util = OSSUtil()
-    md_path = _oss_util.put_md('static/images/' + brand1 + '_' + brand2 + '_report.md')
+    path_check("static/report")   # 确保该路径下的文件夹存在，该文件夹用来存生成的竞争性关键词分析报告
+    md_path = _oss_util.put_md('static/report/' + brand1 + '_' + brand2 + '_report.md')
     result = {'md_path': md_path}
 
     message = info.split('\n')

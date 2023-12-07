@@ -1,6 +1,7 @@
 from applications.views import index_bp
 from flask import Flask, render_template, request, redirect, url_for
 from applications.users import *
+from models import *
 
 
 @index_bp.route('/login')
@@ -24,7 +25,15 @@ def detail_page():
     piclink = request.args.get('piclink')
     introduction = request.args.get('introduction')
     seedword = request.args.get('seedword')
-    return render_template('topic-details.html', thisword=commentword, thislink=piclink, introduction=introduction, seedword=seedword)
+    seedword_model = SeedWordModel.query.filter_by(word=seedword).first()
+    compword_model = CompWordModel.query.filter_by(word=commentword).first()
+    if commentword:
+        middle = SeedwordCompword.query.filter_by(seedword_id=seedword_model.id, compword_id=compword_model.id).first()
+        grade = middle.grade
+    else:
+        grade = seedword_model.grade
+
+    return render_template('topic-details.html', thisword=commentword, thislink=piclink, introduction=introduction, seedword=seedword, grade=grade)
 
 
 # @index_bp.route('/lists')
