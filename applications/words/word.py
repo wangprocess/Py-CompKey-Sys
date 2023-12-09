@@ -48,7 +48,7 @@ def get_compword():
                 'chart': oss_model_chart.path if oss_model_chart else 'https://business-03.oss-cn-hangzhou.aliyuncs.com/images/1b685172-9324-11ee-b9f6-744ca17172e4.png',
                 'word_cloud': oss_model_wordcloud.path if oss_model_wordcloud else 'https://business-03.oss-cn-hangzhou.aliyuncs.com/images/1b685172-9324-11ee-b9f6-744ca17172e4.png',
                 'introduction': seedword_model.introduction if seedword_model.introduction else '中南大学，铁道学院，知行合一，经世致用，前程似锦，灿烂光明，电子商务，问题不大，继续努力',
-                'comment': comment_model.text if comment_model else '等你来说说TA是什么水平',
+                'comment': comment_model.text if comment_model and comment_model.text else '等你来说说TA是什么水平',
                 'grade': seedword_model.grade if seedword_model.grade else '2.5',
                 'grade_num': grade_num
             }
@@ -62,7 +62,7 @@ def get_compword():
                     'comp': middle.comp_value,
                     'image': oss_model_image.path if oss_model_image else 'https://business-03.oss-cn-hangzhou.aliyuncs.com/images/1b685172-9324-11ee-b9f6-744ca17172e4.png',
                     'introduction': middle.compword.introduction if middle.compword.introduction else '中南大学，铁道学院，知行合一，经世致用，前程似锦，灿烂光明，电子商务，问题不大，继续努力',
-                    'comment': comment_model.text if comment_model else '等你来说说TA是什么水平',
+                    'comment': comment_model.text if comment_model and comment_model.text else '等你来说说TA是什么水平',
                     'grade': middle.grade if middle.grade else '2.5',
                     'grade_num': grade_num
                 }
@@ -160,7 +160,7 @@ def get_compword():
                         db.session.add(compword_model)
                         db.session.commit()
 
-                    compword_model = CompWordModel.query.filter_by(word=compkey).order_by(desc(CommentModel.like)).first()
+                    compword_model = CompWordModel.query.filter_by(word=compkey).first()
                     middle_table = SeedwordCompword()
                     middle_table.comp_value = comp
                     middle_table.compword = compword_model
@@ -169,7 +169,7 @@ def get_compword():
 
                     oss_model_comp = OssModel.query.filter_by(name=compkey + '.jpg').first()
                     comment_model = CommentModel.query.filter_by(seedword_id=seedword_model.id,
-                                                                 compword_id=compword_model.id).first()
+                                                                 compword_id=compword_model.id).order_by(desc(CommentModel.like)).first()
                     if oss_model_comp:
                         path = oss_model_comp.path
                     else:
